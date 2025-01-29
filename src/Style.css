@@ -4,7 +4,7 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f5f5f5;
+    background-color: #fff;
   }
   
   .header {
@@ -19,4 +19,206 @@ body {
   }
   
   /* Add more custom styles for your components here */
+
+/* styling of css */
+
+/* Navbar Styling */
+.navbar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(90deg,#e65d01, #41004b);
+    color:linear-gradient(90deg, #1f1f1f, #333333);
+    padding: 15px 30px;
+    transition: all 0.3s ease;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    
+}
+
+.logo {
+    font-size: 28px;
+    font-weight: bold;
+    transition: color 0.3s ease;
+    /* Align logo to the left */
+
+    /* border: 1px solid #f4f4ef; */
+
+    
+}
+
+/* Hover animation for the logo */
+
+
+.nav-links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    /* border: 1px solid #f4f4ef; */
+}
+
+.login{
+    color: rgb(1, 2, 50);
+}
+
+.nav-links a {
+    color: white;
+    margin-left: 20px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    position: relative; /* For underline animation */
+    font-size: 18px;
+    transition: all 0.3s ease; /* Smooth transition for color change */
+}
+
+.nav-links a:hover {
+    /* background: linear-gradient(90deg,transparent, #2e3400); */
+    color: #a4f9af; /* Change color on hover */
+}
+
+.nav-links a:hover svg {
+    transform: scale(1.2); /* Slightly enlarge the icon */
+    transition: transform 0.3s ease; /* Smooth scaling */
+}
+
+.nav-links a:hover::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    font-weight: bold;
+    background: linear-gradient(90deg,transparent, #e8fb17); /* Underline animation */
+    transition: all 0.3s ease;
+}
+
+.nav-links a svg {
+    margin-right: 5px;
+    transition: transform 0.3s ease; /* Smooth icon scaling */
+}
+
+/* Landing Page Styling */
+/* Basic page styling */
+.landing-page {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+  }
+  
+  .main-content {
+    display: flex;
+    justify-content: space-between;
+    padding: 50px;
+    flex-grow: 1;
+  }
+  
+  /* Left Section (Bot Animation) */
+  .left {
+    flex-basis: 45%;
+  }
+  
+  /* Right Section (Icons and AI Chat Features) */
+  .right {
+    flex-basis: 45%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  /* Feature Icons */
+  .features {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    margin-bottom: 30px;
+  }
+  
+  .feature {
+    text-align: center;
+    width: 80px;
+  }
+
+  .setup-feature{
+    width: 300px;
+    height: 250px;
+  }
+  
+  .feature img {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 10px;
+  }
+  
+  /* Chat Conversation Image */
+  .chat-conversation {
+    margin-bottom: 30px;
+  }
+  
+  .chat-conversation img {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    border-radius: 8px;
+  }
+  
+  /* Set Up Button Styling */
+  .setup-button button {
+    background-color: #ff6f61;
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    font-size: 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .setup-button button:hover {
+    background-color: #e85f55;
+  }
+
+  /* Animation Styling */
+  .ai-bot {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .ai-bot-video {
+    width: 100%;
+    height: auto;
+    border-radius: 50%;
+  }
+  
+/* set-up button styling */
+.learn-more-button {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    padding: 0.8rem 2rem; /* More padding for a prominent look */
+    font-size: 1rem;
+    font-weight: 600;
+    color: #0c0c0c; /* Base color for text */
+    background-image: linear-gradient(135deg, #9333ea, #3b82f6);
+    border: none; /* Removing border for a cleaner look */
+    border-radius: 30px; /* Full-rounded button */
+    cursor: pointer;
+    outline: none;
+    margin-top: 15px;
+    transition: all 0.3s ease; /* Smooth transitions */
+    box-shadow: 0px 4px 12px rgba(59, 130, 246, 0.3); /* Subtle shadow */
+}
+
+.learn-more-button:hover {
+    background: linear-gradient(135deg, #3b82f6, #9333ea); /* Color reversal on hover */
+}
+
   
