@@ -1,0 +1,22 @@
+/* src/styles.css */
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+  }
+  
+  .header {
+    background-color: #6200ea;
+    color: white;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .container {
+    padding: 20px;
+  }
+  
+  /* Add more custom styles for your components here */
+  
