@@ -15,13 +15,11 @@ const Navbar = () => {
         <a href="#contact">
           <FaEnvelope /> Contact Us
         </a>
+        <button className="auth-btn" onClick={() => setModalOpen(true)}>
+            <FaUser /> Sign In / Sign Up
+      </button>
       </nav>
 
-      <div className="nav-links login">
-      <button className="auth-btn" onClick={() => setModalOpen(true)}>
-            <FaUser /> Sign In / Sign Up
-          </button>
-      </div>
       <AuthModal isOpen={modalOpen} onClose={() => setModalOpen(false)} />
     </header>
   );

@@ -6,11 +6,15 @@ import Navbar from "../components/Navbar";
 import AiBotAnimation from "../components/AiBotAnimation";
 import AnimatedButton from "../components/SetUpButton";
 
+
 import setupVid from "../assets/setup.mp4";
 import leftChat from "../assets/left_chat.jpg"
 import rightChat from "../assets/right_chat.png"
+import chatbotIcon from "../assets/chatbot.png"
 
 const LandingPage = () => {
+   
+
     return (
         <div className="landing-page">
           {/* Include Navbar */}
@@ -65,6 +69,10 @@ const LandingPage = () => {
             </div>
 
           
+          </div>
+
+          <div className="chatbot-icon">
+            <img src={chatbotIcon} alt="chatbot" />
           </div>
         </div>
       );
