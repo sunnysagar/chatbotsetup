@@ -646,14 +646,19 @@ body {
 }
 
 
-
-
-
   @media screen and (max-width: 768px) {
     .navbar{
       flex-direction: column;
       justify-content: center;
       align-items: center;
+    }
+    .nav-links a{
+      font-size: 10px;
+    }
+
+    .auth-btn {
+      flex-direction: column;
+      font-size: 10px;
     }
     .main-content {
       flex-direction: column;
