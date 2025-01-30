@@ -4,6 +4,7 @@ import { auth, googleProvider } from "../../firebase"; // NEW
 
 import {
   signInWithPopup,
+  signInWithRedirect,
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
 } from "firebase/auth";
@@ -39,7 +40,11 @@ const AuthModal = ({ isOpen, onClose }) => {
   // 🔹 Handle Google Sign-In
   const handleGoogleSignIn = async () => {
     try {
-      await signInWithPopup(auth, googleProvider);
+      if (window.innerWidth <= 768) {
+        await signInWithRedirect(auth, googleProvider); // Use Redirect for Mobile
+      } else {
+        await signInWithPopup(auth, googleProvider); // Use Popup for Desktop
+      }
       navigate("/dashboard"); // ✅ Redirect to Dashboard on Success
       onClose(); // Close modal after successful auth
     } catch (err) {

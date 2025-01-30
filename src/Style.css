@@ -716,6 +716,11 @@ body {
         margin-top: 5%;
     }
 
+    /* auth modal */
+    .auth-modal {
+      width: 80%;
+    }
+
     /* sidebar */
     .sidebar {
       top: 20px; 
