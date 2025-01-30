@@ -724,21 +724,22 @@ body {
     /* sidebar */
     .sidebar {
       top: 20px; 
-      width: 400px;
+      width: 50%;
       flex-direction: row;
       justify-content: center;
       align-items: center;
       transform: translateX(50%);
-
       border: 2px solid #000;
     }
 
     .menu {
       flex-direction: row;
+      gap: 0.2rem;
     }
 
     .sidebar-item {
       padding: 10px;
+      
     }
   
     .icon {
@@ -758,22 +759,27 @@ body {
 
     .middle-container {
       flex: 1;
-      margin: 100px;
-      padding: 20px;
+      width: 100%;
+      margin-top: 30px;
+      padding: 10px;
+      
+      border: 2px solid #000;
     }
     .text-btn{
       width: 100%;
+      flex-direction: row; 
+    }
+    .text-container{
       display: flex;
-      justify-content: space-between;
-      align-items: center;
-      position: relative;
+      flex-direction: column;
     }
     .bot-section {
-      
+      width: 80%;
       align-items: center;
       justify-content: center;
       height: auto;
       padding: 50px 20px;
+
     }
   
     .bot-image {
@@ -786,7 +792,7 @@ body {
     }
   
     .bot-animation {
-      width: 350px;
+      width: 500px;
       height: auto;
       transform: translateY(0);
     }
