@@ -86,44 +86,47 @@ const MainDashboard = () => {
 
         {/* Setup Chatbot Button with Animated Icon */}
         {/* Setup Chatbot Button with Multi-Layered Arrow Effect */}
-        <motion.button
-          className="setup-btn1"
-          onClick={() => navigate("/setup-chatbot")}
-          whileHover={{ scale: 1.1 }}
-        >
+        <div className="setup-btn-container">
           <motion.button
-            className="setup-btn2"
+            className="setup-btn1"
             onClick={() => navigate("/setup-chatbot")}
             whileHover={{ scale: 1.1 }}
           >
             <motion.button
-              className="setup-btn"
+              className="setup-btn2"
               onClick={() => navigate("/setup-chatbot")}
               whileHover={{ scale: 1.1 }}
             >
-              <div className="arrow-container">
-                <motion.img
-                  src={arrowrightup}
-                  alt="Arrow 1"
-                  className="arrow-image arrow-layer-1"
-                  whileHover={{ x: 5, y: -5 }}
-                />
-                <motion.img
-                  src={arrowrightup}
-                  alt="Arrow 2"
-                  className="arrow-image arrow-layer-2"
-                  whileHover={{ x: 8, y: -8 }}
-                />
-                <motion.img
-                  src={arrowrightup}
-                  alt="Arrow 3"
-                  className="arrow-image arrow-layer-3"
-                  whileHover={{ x: 12, y: -12 }}
-                />
-              </div>
+              <motion.button
+                className="setup-btn"
+                onClick={() => navigate("/setup-chatbot")}
+                whileHover={{ scale: 1.1 }}
+              >
+                <div className="arrow-container">
+                  <motion.img
+                    src={arrowrightup}
+                    alt="Arrow 1"
+                    className="arrow-image arrow-layer-1"
+                    whileHover={{ x: 5, y: -5 }}
+                  />
+                  <motion.img
+                    src={arrowrightup}
+                    alt="Arrow 2"
+                    className="arrow-image arrow-layer-2"
+                    whileHover={{ x: 8, y: -8 }}
+                  />
+                  <motion.img
+                    src={arrowrightup}
+                    alt="Arrow 3"
+                    className="arrow-image arrow-layer-3"
+                    whileHover={{ x: 12, y: -12 }}
+                  />
+                </div>
+              </motion.button>
             </motion.button>
           </motion.button>
-        </motion.button>
+        </div>
+       
         </div>
 
       
