@@ -3,6 +3,7 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import {BrowserRouter as Router, Route, Routes} from 'react-router-dom'
 import LandingPage from './pages/LandingPage'
+import MainDashboard from './pages/MainDashboard'
 import './Style.css'
 
 const App = () => {
@@ -11,6 +12,7 @@ const App = () => {
    <Router>
     <Routes>
       <Route path="/" element={<LandingPage />} />
+      <Route path="/dashboard" element={<MainDashboard />} />
     </Routes> 
    </Router>
   );
