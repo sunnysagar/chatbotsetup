@@ -11,6 +11,7 @@ import setupVid from "../assets/setup.mp4";
 import leftChat from "../assets/left_chat.jpg"
 import rightChat from "../assets/right_chat.png"
 import chatbotIcon from "../assets/chatbot.png"
+import aiBotVideo from "../assets/ai-bot.mp4";
 
 const LandingPage = () => {
    
@@ -24,7 +25,7 @@ const LandingPage = () => {
           <div className="main-content">
             {/* Left: AI Bot Animation */}
             <div className="left">
-              <AiBotAnimation />
+              <AiBotAnimation aivideo={aiBotVideo} />
             </div>
     
             {/* Right: Icons and Chatbot features */}
