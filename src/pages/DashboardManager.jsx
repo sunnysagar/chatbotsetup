@@ -1,7 +1,7 @@
 import React from "react";
 import Sidebar from "../components/Sidebar";
 import { auth } from "../../firebase";
-// import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 // import { motion } from "framer-motion";
 
 import AiBotAnimation from "../components/AiBotAnimation";
