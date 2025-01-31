@@ -1052,7 +1052,17 @@ button:hover {
 .chatbot-integration-container {
   width: 100%;
   height: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-left: -5%;
 }
+
+/* .test-chatbot-container{
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+} */
 
 .topbar {
   width: 100%;
@@ -1425,6 +1435,19 @@ button:hover {
       transform: translateY(-50px);
     }
 
+    .chatbot-integration-container {
+      width: 80%;
+      height: 100%;
+      margin-top: 20%;
+      display: flex;
+      flex-direction: column;
+      /* justify-content: center; */
+      margin-left: 0;
+    }
+
+    .company-dashboard-container{
+      margin-top: 20%;
+    }
     /* chat animations */
     .chat-container {
       width: 40%;
