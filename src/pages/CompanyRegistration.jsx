@@ -3,9 +3,8 @@ import axios from "axios";
 import { motion } from "framer-motion";
 import "../Style.css"; // Add your CSS here for styling
 import { useNavigate } from "react-router-dom";
-import { nav } from "framer-motion/client";
 
-const CompanyRegistration = ({ onSubmitSuccess }) => {
+const CompanyRegistration = () => {
   const [companyName, setCompanyName] = useState("");
   const [websiteUrl, setWebsiteUrl] = useState("");
   const [description, setDescription] = useState("");
@@ -15,18 +14,34 @@ const CompanyRegistration = ({ onSubmitSuccess }) => {
 
   const navigate = useNavigate();
 
+  const backendUrl = import.meta.env.VITE_API_URL || "http://localhost:3001"; // Default to localhost if not in production
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
     setError("");
     try {
-      const response = await axios.post("http://localhost:3001/api/scrape", {
+      const response = await axios.post(`${backendUrl}/api/scrape`, {
         companyName,
         websiteUrl,
         description,
       });
-      onSubmitSuccess(response.data); // Pass data to parent component for next steps
-      navigate("/company-dashboard"); // Navigate to the next step
+
+      const transformedData = {
+        companyName: response.data.name,  // Make sure this key exists in the response
+        websiteUrl: response.data.websiteUrl,
+        description: response.data.description,
+        metaDescription: response.data.metaDescription || "No description available.",
+        pages: response.data.pages.map(page => ({
+          pageName: page.pageName,
+          status: page.status,
+          dataChunks: page.dataChunks || [],
+        })),
+      };
+
+      console.log("Transformed Data:", transformedData);
+      // onSubmitSuccess(response.data); // Pass data to parent component for next steps
+      navigate("/company-dashboard", { state: transformedData });  // Navigate to the next step
     } catch (error) {
       setError("Error submitting company. Please check the details.");
       console.error("Error submitting company:", error);
