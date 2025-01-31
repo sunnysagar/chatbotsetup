@@ -1,15 +1,22 @@
 import React, { useState } from "react";
 import { FaTachometerAlt, FaRobot, FaUser, FaCog, FaSignOutAlt } from "react-icons/fa";
 import { motion } from "framer-motion";
+
+import { useNavigate } from "react-router-dom";
 import "../Style.css";
 
 const Sidebar = ({ user, onLogout }) => {
+    const navigate = useNavigate();
+
+    const handleClick =() => {
+        navigate("/setup-chatbot");
+    }
     return (
       <div className="sidebar">
         {/* Sidebar Items */}
         <div className="menu">
           <SidebarItem icon={<FaTachometerAlt />} text="Dashboard" />
-          <SidebarItem icon={<FaRobot />} text="Setup Chatbot" />
+          <SidebarItem onClick = {handleClick} icon={<FaRobot />} text="Setup Chatbot"/>
           <SidebarItem icon={<FaUser />} text="Profile" />
           <SidebarItem icon={<FaCog />} text="Settings" />
   
