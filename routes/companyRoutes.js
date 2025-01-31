@@ -85,6 +85,9 @@ router.post("/scrape", async (req, res) => {
   await newCompany.save();
 
   res.status(200).json({
+    name: companyName, // Assuming companyName is correct here
+    websiteUrl: websiteUrl,
+    description: description,
     message: "Company data processed successfully",
     metaDescription,
     pages,
@@ -95,6 +98,21 @@ router.post("/scrape", async (req, res) => {
 router.get("/companies", async (req, res) => {
   const companies = await Company.find();
   res.status(200).json(companies);
+});
+
+// Get full details for a specific company
+router.get("/companies/:companyId", async (req, res) => {
+  const company = await Company.findById(req.params.companyId);
+  if (!company) {
+    return res.status(404).json({ error: "Company not found" });
+  }
+  res.status(200).json({
+    name: company.name,
+    websiteUrl: company.websiteUrl,
+    description: company.description,
+    metaDescription: company.metaDescription,
+    pages: company.pages,
+  });
 });
 
 // Get pages for a specific company
