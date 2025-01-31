@@ -7,6 +7,8 @@ import DashboardManager from './pages/DashboardManager'
 import SetupChatbot from './pages/Setup-Chatbot'
 import './Style.css'
 import MainDashboard from './pages/MainDashboard'
+import CompanyRegistration from './pages/CompanyRegistration'
+import CompanyDashboard from './pages/CompanyDashboard'
 
 const App = () => {
 
@@ -15,7 +17,8 @@ const App = () => {
     <Routes>
       <Route path="/" element={<LandingPage />} />
       <Route path="/dashboard" element={<DashboardManager> <MainDashboard /> </DashboardManager>} />
-      <Route path= "/setup-chatbot" element = { <DashboardManager> <SetupChatbot /> </DashboardManager> }/>
+      <Route path= "/company-dashboard" element = { <DashboardManager> <CompanyDashboard /> </DashboardManager> }/>
+      <Route path='/company-registration' element={<DashboardManager> <CompanyRegistration /> </DashboardManager>} />
     </Routes> 
    </Router>
   );

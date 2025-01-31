@@ -4,9 +4,15 @@ import { motion } from "framer-motion";
 import { useNavigate, useLocation } from "react-router-dom";
 import "../Style.css";
 
+import CompanyRegistration from "../pages/CompanyRegistration";
+
 const Sidebar = ({ user, onLogout }) => {
-    // const navigate = useNavigate();
+    const navigate = useNavigate();
     const location = useLocation();
+
+    const openComapnyRegistration = () => {
+        navigate("/company-registration");
+    };
 
     return (
       <div className="sidebar">
@@ -20,8 +26,9 @@ const Sidebar = ({ user, onLogout }) => {
           <SidebarItem
             icon={<FaRobot />}
             text="Setup Chatbot"
-            path="/setup-chatbot"
-            isActive={location.pathname === "/setup-chatbot"}
+            path="/setup-chatbot" 
+            isActive={location.pathname === "/setup-chatbot" || location.pathname === "/company-registration"}
+            onClick={openComapnyRegistration}
           />
           <SidebarItem
             icon={<FaUser />}
