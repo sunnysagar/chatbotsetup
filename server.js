@@ -19,36 +19,24 @@ const company5 = require("./dummydata/company5");
 const app = express();
 const port = process.env.PORT || 3001;  // Use port from environment variable or default to 3001
 
-// CORS configuration
+// Use CORS to allow frontend access
 const allowedOrigins = [
   "https://ai-c-bot.netlify.app", // Production
   "http://localhost:5173"         // Development (your local frontend)
 ];
 
-// CORS middleware
 app.use(cors({
   origin: function (origin, callback) {
-    // If no origin (request made by a non-browser client), allow it
     if (!origin || allowedOrigins.includes(origin)) {
       callback(null, true);  // Allow the request
     } else {
-      callback(new Error("Not allowed by CORS"));
+      callback(new Error('Not allowed by CORS'));
     }
-  },
-  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-  allowedHeaders: ["Content-Type", "Authorization"],
-  credentials: true
+  }
 }));
 
-// Pre-flight handling for all routes
-app.options("*", cors());
+app.options('*', cors()); // Enable CORS for all routes during OPTIONS preflight
 
-// COOP & COEP headers to avoid blocking calls like window.close()
-app.use((req, res, next) => {
-  res.setHeader("Cross-Origin-Opener-Policy", "same-origin");
-  res.setHeader("Cross-Origin-Embedder-Policy", "require-corp");
-  next();
-});
 
 app.use(express.json());
 

@@ -8,8 +8,7 @@ const router = express.Router();
 // Function to generate dummy data (used if no scraping)
 const generateDummyData = (companyName, websiteUrl, description) => {
   // Generate a meta description based on company name and description
-  const metaDescription = `${companyName} provides innovative solutions in the field of ${description ? description.toLowerCase() : 'technology'}.`;
-
+  const metaDescription = `${companyName} provides innovative solutions in the field of ${description.toLowerCase()}.`;
 
   // Dummy pages
   const pages = [
@@ -58,42 +57,55 @@ const scrapeWebsite = async (url) => {
 router.post("/scrape", async (req, res) => {
   const { websiteUrl, companyName, description } = req.body;
 
-  // Attempt to scrape the website
   let metaDescription = "";
   let pages = [];
 
-  if (websiteUrl) {
-    // If the URL is provided, try to scrape it
-    const scrapeData = await scrapeWebsite(websiteUrl);
-    metaDescription = scrapeData.metaDescription;
-    pages = scrapeData.pages;
-  } else {
-    // If no URL is provided, generate dummy data
-    const dummyData = generateDummyData(companyName, websiteUrl, description);
-    metaDescription = dummyData.metaDescription;
-    pages = dummyData.pages;
+  try {
+    if (websiteUrl) {
+      // If the URL is provided, try to scrape it
+      const scrapeData = await scrapeWebsite(websiteUrl);
+
+      if (scrapeData) {
+        metaDescription = scrapeData.metaDescription || ""; // Default to empty string if not found
+        pages = scrapeData.pages || []; // Default to empty array if not found
+      } else {
+        throw new Error("No data returned from scraping.");
+      }
+    } else {
+      // If no URL is provided, generate dummy data
+      const dummyData = generateDummyData(companyName, websiteUrl, description);
+      metaDescription = dummyData.metaDescription;
+      pages = dummyData.pages;
+    }
+
+    // Save company to MongoDB
+    const newCompany = new Company({
+      name: companyName,
+      websiteUrl,
+      description,
+      metaDescription,
+      pages,
+    });
+
+    await newCompany.save();
+
+    res.status(200).json({
+      name: companyName,
+      websiteUrl: websiteUrl,
+      description: description,
+      message: "Company data processed successfully",
+      metaDescription,
+      pages,
+    });
+  } catch (error) {
+    console.error("Error scraping website:", error);
+    res.status(500).json({
+      message: "Error processing company data.",
+      error: error.message,
+    });
   }
-
-  // Save company to MongoDB
-  const newCompany = new Company({
-    name: companyName,
-    websiteUrl,
-    description,
-    metaDescription,
-    pages,
-  });
-
-  await newCompany.save();
-
-  res.status(200).json({
-    name: companyName, // Assuming companyName is correct here
-    websiteUrl: websiteUrl,
-    description: description,
-    message: "Company data processed successfully",
-    metaDescription,
-    pages,
-  });
 });
+
 
 // Get all companies
 router.get("/companies", async (req, res) => {
