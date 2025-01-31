@@ -8,7 +8,8 @@ const router = express.Router();
 // Function to generate dummy data (used if no scraping)
 const generateDummyData = (companyName, websiteUrl, description) => {
   // Generate a meta description based on company name and description
-  const metaDescription = `${companyName} provides innovative solutions in the field of ${description.toLowerCase()}.`;
+  const metaDescription = `${companyName} provides innovative solutions in the field of ${description ? description.toLowerCase() : 'technology'}.`;
+
 
   // Dummy pages
   const pages = [
