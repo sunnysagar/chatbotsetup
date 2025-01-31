@@ -27,7 +27,7 @@ const Sidebar = ({ user, onLogout }) => {
             icon={<FaRobot />}
             text="Setup Chatbot"
             path="/setup-chatbot" 
-            isActive={location.pathname === "/setup-chatbot" || location.pathname === "/company-registration"}
+            isActive={location.pathname === "/setup-chatbot" || location.pathname === "/company-registration"|| location.pathname === "/company-dashboard" || location.pathname === "/setup-chatbot-intregation"}
             onClick={openComapnyRegistration}
           />
           <SidebarItem

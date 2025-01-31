@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { motion } from "framer-motion";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import "../Style.css"; // Add your CSS here for styling
 
 const CompanyDashboard = () => {
@@ -17,11 +17,14 @@ const CompanyDashboard = () => {
   const location = useLocation();
   const { companyName, websiteUrl, description, metaDescription, pages } = location.state;
 
+  const navigate = useNavigate();
+
   const [selectedcompany, setSelectedCompany] = useState(null);
 
-  console.log(location.state);
+  const handleNav = () => { 
+    navigate("/setup-chatbot-intregation");
+  };
 
-  // console.log("companyData", companyData);
 
   const backendUrl = import.meta.env.VITE_API_URL || "http://localhost:3001"; // Default to localhost if not in production
 
@@ -161,7 +164,7 @@ const CompanyDashboard = () => {
         <motion.button
           className="setup-website-btn"
           whileHover={{ scale: 1.1 }}
-          onClick={() => alert("Setup In Your Website clicked!")}
+          onClick={handleNav}
         >
           Setup In Your Website
         </motion.button>
