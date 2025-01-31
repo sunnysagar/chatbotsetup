@@ -377,13 +377,12 @@ body {
   }
 
 
-/* Sidebar Styling */
+/* Sidebar with Glassmorphism & Floating Effect */
 .sidebar {
   position: fixed;
   left: 2px;
   top: 50%; 
   transform: translateY(-50%);
-  /* background-image: linear-gradient(180deg,#e65d01, #c1cb02); */
   background-image: linear-gradient(145deg, rgb(255, 111, 16), rgba(255, 2, 2, 0.933));
   padding: 10px 0;
   border-radius: 15px;
@@ -392,8 +391,9 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  box-shadow: 0px 0px 10px rgba(255, 0, 255, 0.5);
+  box-shadow: 0px 0px 15px rgba(255, 0, 255, 0.5);
   z-index: 1000;
+  /* width: 60px; Fixed width for circular buttons */
 }
 
 /* Sidebar Items */
@@ -406,68 +406,98 @@ body {
   width: 100%;
 }
 
+/* Sidebar Item */
 .sidebar-item {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 90%;
+  /* height: 50px; */
   padding: 15px;
   color: white;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
-  border-radius: 10px;
+  border-radius: 50%;
   position: relative;
+  /* background: rgba(255, 255, 255, 0.2); */
 }
 
+/* Hover Effect */
 .sidebar-item:hover {
- 
   width: 20px;
   height: 20px;
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.4);
+  transform: scale(1.1);
+  box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.4);
   border-radius: 50%;
+}
+
+/* Active State */
+.sidebar-item.active {
+  width: 25px;
+  height: 25px;
+  background-image: linear-gradient(90deg, #0f0253, #0306ae);
+  box-shadow: inset 0px 0px 10px rgba(246, 126, 29, 0.875);
+  font-weight: bolder;
+  border-radius: 50%;
+  color: rgb(225, 255, 0);
 }
 
 /* Icon Styling */
 .icon {
-  font-size: 25px;
+  font-size: 22px;
   transition: transform 0.3s ease-in-out;
 }
 
+/* Icon Scaling on Hover */
 .sidebar-item:hover .icon {
-  transform: scale(1.01);
+  transform: scale(1.1);
 }
 
-/* Text (Initially Hidden) */
+/* Tooltip (Initially Hidden) */
 .text {
   position: absolute;
   left: 70px;
   background: rgba(7, 1, 65, 0.995);
   color: white;
-  padding: 8px 10px;
-  border-radius: 5px;
+  padding: 8px 12px;
+  border-radius: 8px;
   font-size: 14px;
   white-space: nowrap;
-  opacity: 0;
+  opacity: 1;
   transform: translateX(-10px);
   transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+  box-shadow: 0px 2px 10px rgba(255, 255, 255, 0.3);
 }
 
-/* Show Text on Hover */
+/* Show Tooltip on Hover */
 .sidebar-item:hover .text {
   opacity: 1;
   transform: translateX(0);
 }
 
+.sidebar-item.active .text {
+  display: none;
+}
 /* Separator */
 .separator {
-  width: 80%;
+  width: 50%;
   height: 1px;
   background: #fff;
   margin: 10px 0;
 }
 
+
 /* Main Dashboard Styling */
 .main-dashboard {
+  width: 100%;
+  display: flex;
+  height: 100vh;
+  background: #fff;
+  
+}
+
+.dashboard-manager {
   width: 100%;
   display: flex;
   height: 100vh;
@@ -483,8 +513,19 @@ body {
 }
 
 /* Middle Section */
-.middle-container {
+.dashboard-container {
   flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin: 20px;
+  height: 100%;
+  position: relative;
+}
+.middle-container {
+  /* flex: 1; */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -663,6 +704,63 @@ body {
   transform: translate(14px, -14px);
 }
 
+/* setup-chatbox styling */
+
+.setup-container {
+  width: 50%;
+  margin: auto;
+  padding: 20px;
+  text-align: center;
+  background: #1e1e2f;
+  color: white;
+  border-radius: 10px;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.progress-bar {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.progress {
+  width: 40px;
+  height: 8px;
+  margin: 0 5px;
+  background: #555;
+  border-radius: 5px;
+}
+
+.progress.active {
+  background: #4caf50;
+}
+
+.form-container, .webpages-container {
+  padding: 20px;
+}
+
+input, textarea {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 5px;
+  border: none;
+}
+
+.submit-btn, .final-btn {
+  background: #ff9800;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.submit-btn:hover, .final-btn:hover {
+  background: #e68900;
+}
+
+
 
   @media screen and (max-width: 768px) {
     .navbar {
@@ -751,6 +849,21 @@ body {
     .sidebar-item {
       padding: 5px 15px;
       
+    }
+
+    .sidebar-item.active, .sidebar-item:hover {
+      width: 10px;
+      height: 30px;
+    }
+
+    .text {
+      left: 50%;
+      top: 60px;
+      transform: translateX(-50%);
+    }
+  
+    .sidebar-item:hover .text {
+      transform: translateX(-50%) translateY(5px);
     }
   
     .icon {
