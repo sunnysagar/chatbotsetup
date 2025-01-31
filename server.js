@@ -20,7 +20,7 @@ const app = express();
 const port = process.env.PORT || 3001;  // Use port from environment variable or default to 3001
 
 // Use CORS to allow frontend access
-app.use(cors());
+app.use(cors({ origin: "https://ai-c-bot.netlify.app/" }));
 app.use(express.json());
 
 // Connect to MongoDB
