@@ -2,21 +2,19 @@ import React from "react";
 import Sidebar from "../components/Sidebar";
 import { auth } from "../../firebase";
 import { useNavigate } from "react-router-dom";
-// import { motion } from "framer-motion";
+
 
 import AiBotAnimation from "../components/AiBotAnimation";
 import { FaLongArrowAltRight } from "react-icons/fa";
 
 import chatbotIcon from "../assets/chatbot.png";
-// import BotVideo from "../assets/robot.mp4";
-// import BotVideo1 from "../assets/robot1.mp4";
-// import arrowrightup from "../assets/rightup.png";
-// import leftaiimg from "../assets/backgroundai1.jpg";
-// import rightaiimg from "../assets/ai-right-hand.png";
+
 
 import "../Style.css";
 
 const DashboardManager = ({ children }) => {
+
+  const navigate = useNavigate();
 
   const handleLogout = async () => {
     await auth.signOut();
