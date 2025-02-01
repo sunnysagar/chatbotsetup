@@ -81,7 +81,7 @@ const AuthModal = ({ isOpen, onClose }) => {
         animate={{ opacity: 1, scale: 1 }}
         exit={{ opacity: 0, scale: 0.8 }}
       >
-        <button className="close-btn" onClick={onClose}>
+        <button className="close-btn-modal" onClick={onClose}>
           ✖
         </button>
 

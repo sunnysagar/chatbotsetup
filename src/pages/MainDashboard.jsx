@@ -78,17 +78,17 @@ const MainDashboard = () => {
         <div className="setup-btn-container">
           <motion.button
             className="setup-btn1"
-            onClick={() => navigate("/setup-chatbot")}
+            onClick={() => navigate("/company-registration")}
             whileHover={{ scale: 1.1 }}
           >
             <motion.button
               className="setup-btn2"
-              onClick={() => navigate("/setup-chatbot")}
+              onClick={() => navigate("/company-registration")}
               whileHover={{ scale: 1.1 }}
             >
               <motion.button
                 className="setup-btn"
-                onClick={() => navigate("/setup-chatbot")}
+                onClick={() => navigate("/company-registration")}
                 whileHover={{ scale: 1.1 }}
               >
                 <div className="arrow-container">

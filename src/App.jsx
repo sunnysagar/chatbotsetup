@@ -7,6 +7,8 @@ import CompanyRegistration from './pages/CompanyRegistration'
 import CompanyDashboard from './pages/CompanyDashboard'
 import ChatbotIntegration from './pages/ChatBotIntregation'
 import '@fortawesome/fontawesome-free/css/all.min.css';
+import EchoAssistant from './pages/EchoTesting'
+import ChatbotAdminDashboard from './pages/AdminDashboard'
 
 
 const App = () => {
@@ -18,7 +20,8 @@ const App = () => {
       <Route path="/dashboard" element={<DashboardManager> <MainDashboard /> </DashboardManager>} />
       <Route path='/company-registration' element={<DashboardManager> <CompanyRegistration /> </DashboardManager>} />
       <Route path= "/company-dashboard" element = { <DashboardManager> <CompanyDashboard /> </DashboardManager> }/>
-      <Route path="/setup-chatbot-intregation" element={<DashboardManager> <ChatbotIntegration /> </DashboardManager>} />
+      <Route path="/setup-chatbot-intregation" element={<DashboardManager> <EchoAssistant /> </DashboardManager>} />
+      <Route path ="/admin-dashboard" element={ <DashboardManager> <ChatbotAdminDashboard /> </DashboardManager> } />
     </Routes> 
    </Router>
   );

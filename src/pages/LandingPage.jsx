@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import '../Style.css';
 import { motion } from "framer-motion";
 
@@ -15,6 +15,12 @@ import aiBotVideo from "../assets/ai-bot.mp4";
 import ContactFooter from "../components/ContactFooter";
 
 const LandingPage = () => {
+
+  const [center, setCenter] = useState("video"); // Default center element
+
+  const handleHover = (element) => {
+    setCenter(element);
+  };
    
 
     return (
@@ -31,19 +37,29 @@ const LandingPage = () => {
     
             {/* Right: Icons and Chatbot features */}
             <div className="right">
-                <div className="right-top">
+            <motion.div
+                className="carousel"
+                initial={{ rotateY: 0 }}
+                animate={{
+                  rotateY: center === "left" ? -15 : center === "right" ? 15 : 0,
+                }}
+                transition={{ type: "spring", stiffness: 80 }}
+              > 
+                 <div className="right-top">
                     <motion.div
-                    className="left-image"
+                    className={`left-image ${center === "left" ? "active" : ""}`}
                     initial={{ scale: 1.1, rotateY: -10, rotateX: 5, y: -10 }}
                     animate={{ scale: 1.1, rotateY: -10, rotateX: 5, y: -10 }}
                     transition={{ type: "spring", stiffness: 80 }}
+                    onHoverStart={() => handleHover("left")}
                     >
                     <img src={leftChat} alt="Left Chat Illustration" />
                     </motion.div>
 
                     {/* Center Video */}
                     <motion.div 
-                    className="video-container"
+                   className={`video-container ${center === "video" ? "active" : ""}`}
+                   onHoverStart={() => handleHover("video")}
                     initial={{ scale: 1.1, rotateY: 0, rotateX: 5, y: -5 }}
                     animate={{ scale: 1.1, rotateY: 0, rotateX: 5, y: -5 }}
                     transition={{ type: "spring", stiffness: 80 }}>
@@ -54,7 +70,8 @@ const LandingPage = () => {
 
                     {/* Right Image with 3D Animation */}
                     <motion.div
-                    className="right-image"
+                     className={`right-image ${center === "right" ? "active" : ""}`}
+                     onHoverStart={() => handleHover("right")}
                     initial={{ scale: 1.1, rotateY: 10, rotateX: 5, y: 30 }}
                     animate={{ scale: 1.1, rotateY: 10, rotateX: 5, y: 30 }}
                     transition={{ type: "spring", stiffness: 80 }}
@@ -63,6 +80,8 @@ const LandingPage = () => {
                     </motion.div>
             
                 </div>
+              </motion.div>
+               
 
                 <div className= "right-bottom">
                      <AnimatedButton text = {"Setup Your Button"} />

@@ -2,13 +2,21 @@ import React, {useState} from "react";
 import AuthModal from "./AuthModal";
 import { FaMoneyBillWave, FaEnvelope, FaUser, FaBars, FaTimes } from "react-icons/fa"; // Import required icons
 import "../Style.css"; // Ensure the CSS file is linked correctly
+import logo from "../assets/logo.png";
 
 const Navbar = () => {
   const [modalOpen, setModalOpen] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   return (
     <header className="navbar">
-      <div className="logo">BeyondChats</div>
+      <div className="logo-nav">
+        <img src={logo} alt="logo"/>
+
+        <div className="title-sub-nav">
+            <h1 className="company-name">Beyond Chat</h1>
+            <p className="subtitle">Think Beyond Limit</p>
+          </div>
+      </div>
       <nav className={`nav-links ${isOpen ? "open" : ""}`}>
         <a href="#pricing">
           <FaMoneyBillWave /> Pricing

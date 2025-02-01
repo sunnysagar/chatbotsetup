@@ -3,6 +3,8 @@ import React from "react";
 import { motion } from "framer-motion";
 import "../Style.css";
 
+import logo from "../assets/logo.png";
+
 const ContactFooter = () => {
     return (
         <footer className="footer">
@@ -10,10 +12,10 @@ const ContactFooter = () => {
 
             <div className="footer-left">
                 <div className="logo-title">
-                <img src="/assest/logo.png" alt="logo" />
+                <img src={logo} alt="logo" />
                 <div className="title-sub">
                 <h2 className="footer-company-name">Beyond Chats</h2>
-                <p className="footer-subtitle">Think the beyond limit</p>
+                <p className="footer-subtitle">Think Beyond Limit</p>
                 </div>
                
                 </div>
@@ -98,7 +100,7 @@ const ContactFooter = () => {
            
             <div class="horizontal-line"></div>
 
-            <p>© 2024 Beyond Chats | All rights reserved.</p>
+            <p className="footer-subtitle">© 2024 Beyond Chats | All rights reserved.</p>
         </footer>
     );
 };

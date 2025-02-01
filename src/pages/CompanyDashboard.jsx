@@ -3,6 +3,7 @@ import axios from "axios";
 import { motion } from "framer-motion";
 import { useLocation, useNavigate } from "react-router-dom";
 import "../Style.css"; // Add your CSS here for styling
+import { FaArrowAltCircleRight} from "react-icons/fa";
 
 const CompanyDashboard = () => {
   const [companies, setCompanies] = useState([]);
@@ -87,8 +88,8 @@ const CompanyDashboard = () => {
     animate={{ opacity: 1 }}
     transition={{ duration: 0.5 }}
   >
-    <h2>Company Dashboard</h2>
-    <h3>Current Company:</h3>
+  
+    <h2>Current Company:</h2>
 
     {/* Flex container for two columns */}
     <div className="company-info-row">
@@ -98,6 +99,7 @@ const CompanyDashboard = () => {
     <p><strong>Description:</strong> {description}</p>
   </motion.div>
 
+ 
   <div className="dropdown-container">
     <h3>Select a Company</h3>
     <select
@@ -155,18 +157,11 @@ const CompanyDashboard = () => {
   )}
     <div className="action-buttons">
         <motion.button
-          className="test-chatbot-btn"
-          whileHover={{ scale: 1.1 }}
-          onClick={() => alert("Test ChatBot clicked!")}
-        >
-          Test ChatBot
-        </motion.button>
-        <motion.button
-          className="setup-website-btn"
+          className="test-chatbot-btnn"
           whileHover={{ scale: 1.1 }}
           onClick={handleNav}
         >
-          Setup In Your Website
+         <FaArrowAltCircleRight  /> <br/> Test <br/> & <br/> Setup ChatBot
         </motion.button>
       </div>
 </motion.div>
