@@ -7,6 +7,7 @@ import {
   signInWithRedirect,
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
+  sendEmailVerification,
 } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import { FaGoogle } from "react-icons/fa";
@@ -18,6 +19,8 @@ const AuthModal = ({ isOpen, onClose }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const [message, setMessage] = useState(""); // To display verification message
+  
   const navigate = useNavigate();
 
   // 🔹 Handle Email/Password Authentication
@@ -26,12 +29,28 @@ const AuthModal = ({ isOpen, onClose }) => {
     setError("");
     try {
       if (isSignUp) {
-        await createUserWithEmailAndPassword(auth, email, password);
+        const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+
+        const user = userCredential.user;
+
+        // Send email verification
+        await sendEmailVerification(user);
+        setMessage("Verification email sent! Please check your inbox.");
       } else {
-        await signInWithEmailAndPassword(auth, email, password);
+        // Sign in user
+        const userCredential = await signInWithEmailAndPassword(auth, email, password);
+        const user = userCredential.user;
+
+        // Check if user is verified
+        if (!user.emailVerified) {
+          setError("Please verify your email before logging in.");
+          return;
+        }
+
+        navigate("/dashboard"); // ✅ Redirect to Dashboard on Success
+        onClose(); // Close modal after successful auth
       }
-      navigate("/dashboard"); // ✅ Redirect to Dashboard on Success
-      onClose(); // Close modal after successful auth
+     
     } catch (err) {
       setError(err.message);
     }
@@ -69,6 +88,7 @@ const AuthModal = ({ isOpen, onClose }) => {
         <h2>{isSignUp ? "Create Account" : "Sign In"}</h2>
 
         {error && <p className="error">{error}</p>}
+        {message && <p className="success">{message}</p>}
 
         <form onSubmit={handleAuth}>
           <label>Email:</label>

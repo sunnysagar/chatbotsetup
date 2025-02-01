@@ -12,6 +12,7 @@ import leftChat from "../assets/left_chat.jpg"
 import rightChat from "../assets/right_chat.png"
 import chatbotIcon from "../assets/chatbot.png"
 import aiBotVideo from "../assets/ai-bot.mp4";
+import ContactFooter from "../components/ContactFooter";
 
 const LandingPage = () => {
    
@@ -75,6 +76,8 @@ const LandingPage = () => {
           <div className="chatbot-icon">
             <img src={chatbotIcon} alt="chatbot" />
           </div>
+
+          <ContactFooter />
         </div>
       );
 };
