@@ -2111,6 +2111,9 @@ button {
       font-size: 14px;
     }
     /*admin panel */
+    .chatbot-dashboard-container{
+      margin-top: 15%;
+    }
     .dashboard-grid {
       grid-template-columns: 1fr;
     }
