@@ -1690,14 +1690,12 @@ button {
 
 /* admin dashboard */
 
-
 :root {
   --bg-color: #0f172a;
   --card-bg: rgba(255, 255, 255, 0.1);
   --text-color: #fa5f17;
   --border-color: rgba(255, 255, 255, 0.2);
 }
-
 
 .chatbot-dashboard-container {
   width: 100%;
@@ -1713,13 +1711,16 @@ button {
   animation: fadeInDown 0.5s ease-out;
 }
 
+/* Flexbox layout for dashboard */
 .dashboard-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  /* 3 equal-width columns */
+
+  display: flex;
+  flex-wrap: wrap;
+   /* Center items horizontally */
   gap: 1.5rem;
 }
 
+/* Dashboard Card */
 .dashboard-card {
   background: var(--card-bg);
   border-radius: 15px;
@@ -1730,6 +1731,14 @@ button {
   border: 1px solid var(--border-color);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   animation: fadeIn 0.5s ease-out;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  flex: 1 1 calc(50% - 1.5rem); /* Ensures 2 cards per row with equal width */
+  min-height: 250px; /* Ensures equal height */
+  max-width: 500px; /* Prevents stretching */
 }
 
 .dashboard-card:hover {
@@ -1745,8 +1754,9 @@ button {
 }
 
 .stats-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 1rem;
 }
 
@@ -1772,80 +1782,21 @@ button {
   opacity: 0.8;
 }
 
-.chart-card {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  grid-column: span 2;
+/* Responsive Design */
+@media (max-width: 768px) {
+  .dashboard-grid {
+    flex-direction: column; /* Stack cards in column */
+    align-items: center; /* Center items */
+  }
+
+  .dashboard-card {
+    flex: 1 1 100%; /* Full width in mobile */
+    max-width: 90%;
+    min-height: 250px; /* Ensure equal height */
+  }
 }
 
-.conversation-list {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-}
-
-.conversation-item {
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 8px;
-  padding: 1rem;
-  margin-bottom: 1rem;
-  transition: background 0.3s ease;
-}
-
-.conversation-item:hover {
-  background: rgba(255, 255, 255, 0.1);
-}
-
-.conversation-item strong {
-  display: block;
-  margin-bottom: 0.5rem;
-}
-
-.conversation-item p {
-  margin: 0 0 0.5rem 0;
-}
-
-.conversation-item span {
-  font-size: 0.8rem;
-  opacity: 0.7;
-}
-
-.settings-grid {
-  width: 500px;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 1rem;
-
-}
-
-.settings-button {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  background: rgba(255, 255, 255, 0.1);
-  border: none;
-  border-radius: 8px;
-  padding: 1rem;
-  color: var(--text-color);
-  font-size: 0.9rem;
-  cursor: pointer;
-  transition: background 0.3s ease, transform 0.3s ease;
-}
-
-.settings-button:hover {
-  background: rgba(255, 255, 255, 0.2);
-  transform: translateY(-3px);
-}
-
-.settings-icon {
-  font-size: 1.5rem;
-  margin-bottom: 0.5rem;
-  color: #000;
-}
-
+/* Fade Animations */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -2475,7 +2426,7 @@ button {
     top: 0;
     left: 0;
     transform: none;
-    width: 70%;
+    width: 80%;
     height: 60%; /* Sidebar height for mobile */
     flex-direction: row; /* Change layout to horizontal on mobile */
     justify-content: space-around;
@@ -2643,9 +2594,10 @@ button {
   }
 
   .echo-container{
-    width: 100vw;
+   
     justify-content: flex-start;
     align-items: flex-start;
+    margin: 0 10px;
 
   }
 
@@ -2682,22 +2634,7 @@ button {
   }
 
   /*admin panel */
-  .chatbot-dashboard-container {
-    /* margin-top: 25%; */
-    width: 100vw;
-    display: flex;
-    flex-direction: column;
-
-  }
-
-  .dashboard-grid {
-    width: 90%;
-    grid-template-columns: 1fr;
-  }
-
-  .chart-card {
-    grid-column: span 1;
-  }
+  
 
   /*profile*/
 
@@ -2705,14 +2642,14 @@ button {
   .detailsSection,
   .locationSection {
     flex: 1 1 100%;
+    width: 260px;
     /* Each section takes full width */
   }
 
   /*settings*/
 
   .settings-container {
-    width: 100vw;
-    border: 2px solid #000;
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -2721,7 +2658,7 @@ button {
 
    /* Adjust card for smaller screens */
    .settings-card {
-     width: 90%;/* Make the card take up more width on mobile */
+     width: 100%;/* Make the card take up more width on mobile */
     max-width: none; /* Remove max-width to make full use of the screen width */
     margin-left: 0;
   }
