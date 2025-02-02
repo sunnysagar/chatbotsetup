@@ -2533,8 +2533,9 @@ button {
 
   /* chat animations */
   .chat-container {
-    width: 80%;
-    height: 60%;
+    margin-left: 10px;
+    width: 75%;
+    height: 70%;
     max-width: 400px;
     /*Smaller max width for mobile*/
 
