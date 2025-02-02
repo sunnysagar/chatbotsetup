@@ -9,6 +9,10 @@ dotenv.config(); // Load environment variables from .env
 const companyRoutes = require("./routes/companyRoutes");
 const Company = require("./models/company");
 
+// for user
+const userRoutes = require("./routes/userRoutes");
+const user = require("./models/user");
+
 // Import dummy data from separate files (You can add your dummy companies here)
 const company1 = require("./dummydata/company1");
 const company2 = require("./dummydata/company2");
@@ -47,6 +51,7 @@ mongoose.connect(process.env.MONGO_URI)
 
 // Use routes
 app.use("/api", companyRoutes);
+app.use("/api", userRoutes );
 
 // Initialize dummy companies
 const initializeDummyCompanies = async () => {
