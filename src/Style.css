@@ -2321,56 +2321,6 @@ button {
   opacity: 0.9;
 }
 
-
-/* contact */
-@media (max-width: 768px) {
-  .contact-contact {
-    padding: 1rem;
-    text-align: center;
-  }
-
-  .contact-contain {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .contact-left,
-  .contact-center,
-  .contact-right {
-    width: 100%;
-    text-align: center;
-    margin-bottom: 1rem;
-  }
-
-  .social-media-icons {
-    justify-content: center;
-  }
-
-  .social-media-icons li{
-    margin: 2px;
-  }
-
-  .social-media-icons li a{
-    width: 40px;
-    height: 40px;
-    font-size: 1.2em;
-  }
-
-  .contact-link-item {
-    text-align: center;
-  }
-
-  .contact-right p {
-    text-align: center;
-  }
-
-  .horizontal-line {
-    width: 90%;
-  }
-}
-
-
-
 @media screen and (max-width: 768px) {
   
   .navbar {
@@ -2415,7 +2365,7 @@ button {
   }
 
   .nav-links a {
-    color: rgb(246, 92, 20);
+    color: rgb(252, 60, 7);
   }
 
   .nav-links.open {
@@ -2443,6 +2393,7 @@ button {
 
   .right{
   margin-top: -2rem;
+  }
 
   .left-image,
   .right-image {
@@ -2470,6 +2421,52 @@ button {
   .auth-modal {
     width: 70%;
     height: fit-content;
+  }
+
+  /* contact */
+
+  .contact-contact {
+    padding: 1rem;
+    text-align: center;
+  }
+
+  .contact-contain {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .contact-left,
+  .contact-center,
+  .contact-right {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+
+  .social-media-icons {
+    justify-content: center;
+  }
+
+  .social-media-icons li{
+    margin: 2px;
+  }
+
+  .social-media-icons li a{
+    width: 40px;
+    height: 40px;
+    font-size: 1.2em;
+  }
+
+  .contact-link-item {
+    text-align: center;
+  }
+
+  .contact-right p {
+    text-align: center;
+  }
+
+  .horizontal-line {
+    width: 90%;
   }
 
   /* sidebar */
@@ -2775,5 +2772,4 @@ button {
     font-size: 14px;
   }
 
-}
 }
