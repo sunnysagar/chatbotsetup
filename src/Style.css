@@ -699,6 +699,9 @@ body {
   align-items: center;
   box-shadow: 0px 0px 15px rgba(255, 0, 255, 0.5);
   z-index: 1000;
+  /*new added */
+  width: 60px; /* Default sidebar width for desktop */
+  height: auto;
   /* width: 60px; Fixed width for circular buttons */
 }
 
@@ -802,18 +805,30 @@ body {
 .dashboard-manager {
   width: 100%;
   display: flex;
-  justify-content: center;
+  /* justify-content: center;
   align-items: center;
-  flex-wrap: nowrap;
+  flex-wrap: nowrap; */
   background: #fff;
   position: relative;
+
+  justify-content: flex-start; /* Align left */
+  align-items: flex-start; /* Align to top */
+  flex-wrap: nowrap;
+
+  /* border: 2px solid #000; */
 
 }
 
 /* Sidebar */
 .sidebar-container {
   width: 60px;
-  height: 60%;
+  height: 100%;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+
 }
 
 .dashboard-container {
@@ -822,8 +837,8 @@ body {
   justify-content: center;
   align-items: center;
   /* Add padding if needed */
-  margin: 20px;
-  padding: 20px;
+  margin-left: 70px; /* Ensure content starts after sidebar */
+  /* border: 2px solid #000; */
 
 }
 
@@ -1425,7 +1440,7 @@ button {
 .echo-container {
   width: 100%;
   height: 100vh;
-  margin: 10px 10px 0px 10px;
+ 
   display: flex;
   justify-content: center;
   align-items: center;
@@ -1800,6 +1815,7 @@ button {
 }
 
 .settings-grid {
+  width: 500px;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   gap: 1rem;
@@ -2061,6 +2077,7 @@ button {
   background: white;
   border-radius: 1rem;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 1200px;
   overflow: hidden;
 }
 
@@ -2362,15 +2379,14 @@ button {
 
   /* sidebar */
   .sidebar {
-    top: 10px;
-    left: 50%;
-    transform: translateX(-50%);
-    /* Center it horizontally */
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-
-    border: 2px solid #000;
+    position: relative;
+    top: 0;
+    left: 0;
+    transform: none;
+    width: 80%;
+    height: 70%; /* Sidebar height for mobile */
+    flex-direction: row; /* Change layout to horizontal on mobile */
+    justify-content: space-around;
   }
 
   .menu {
@@ -2411,12 +2427,21 @@ button {
   }
 
   .sidebar-container {
-    width: 80%;
+    top: 10px;
+    width: 100%; /* Sidebar takes full width on mobile */
+    height: 60px; /* Sidebar height on mobile */
+    position: relative;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
   }
 
   .dashboard-container {
-    flex: 1;
+    margin-left: 0; /* Remove margin for mobile */
+    margin-top: 60px; /* Ensure content starts after sidebar */
+
     justify-content: center;
     align-items: center;
   }
@@ -2438,7 +2463,6 @@ button {
     flex: 1;
     width: 100%;
     height: 100vh;
-    margin-top: 25%;
     padding: 10px;
     margin-left: 0;
   }
@@ -2503,7 +2527,9 @@ button {
   }
 
   .company-dashboard-container {
-    margin-top: 20%;
+    width: 100vw;
+    display: flex;
+    align-items: center;
   }
 
   /* chat animations */
@@ -2517,6 +2543,13 @@ button {
 
   .chat-window {
     height: calc(100% - 30px);
+  }
+
+  .echo-container{
+    width: 100vw;
+    justify-content: flex-start;
+    align-items: flex-start;
+
   }
 
   /* echo assitant */
@@ -2553,13 +2586,15 @@ button {
 
   /*admin panel */
   .chatbot-dashboard-container {
-    margin-top: 25%;
+    /* margin-top: 25%; */
+    width: 100vw;
     display: flex;
     flex-direction: column;
-    height: 100vh;
+
   }
 
   .dashboard-grid {
+    width: 90%;
     grid-template-columns: 1fr;
   }
 
@@ -2568,11 +2603,6 @@ button {
   }
 
   /*profile*/
-  .profileContainer {
-    margin-top: 20%;
-    width: 100%;
-    height: 70%;
-  }
 
   .photoSection,
   .detailsSection,
@@ -2584,24 +2614,39 @@ button {
   /*settings*/
 
   .settings-container {
-    margin-top: 30%;
-    width: 80vw;
+    width: 100vw;
+    padding: 1rem; /* Reduce padding for mobile */
   }
 
-  .settings-card {
-    width: 100%;
+   /* Adjust card for smaller screens */
+   .settings-card {
+    width: 90%; /* Make the card take up more width on mobile */
+    max-width: none; /* Remove max-width to make full use of the screen width */
   }
-
   .settings-header h1 {
-    font-size: 1.5rem;
+    font-size: 1.5rem; /* Smaller header text */
+  }
+
+  .settings-nav-list {
+    flex-direction: column; /* Stack navigation items vertically */
+    align-items: center;
+  }
+
+  .settings-nav-item {
+    font-size: 1rem; /* Smaller text for mobile */
+    padding: 0.5rem 0; /* Add some spacing */
+  }
+
+  .settings-section h2 {
+    font-size: 1.25rem; /* Smaller section headings */
   }
 
   .settings-input {
-    width: 100%;
+    font-size: 0.9rem; /* Smaller input text */
   }
 
-  .settings-footer {
-    font-size: 0.75rem;
+  .settings-theme-toggle {
+    flex-direction: column; /* Stack theme toggle vertically */
   }
 
 }
