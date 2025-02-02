@@ -13,9 +13,9 @@ const data = [
 ];
 
 const recentConversations = [
-  { id: 1, user: "John Doe", message: "How can I reset my password?", time: "5 min ago" },
-  { id: 2, user: "Jane Smith", message: "What are your business hours?", time: "15 min ago" },
-  { id: 3, user: "Bob Johnson", message: "I need help with my order.", time: "30 min ago" },
+  { id: 1, user: "Sunny", message: "How can I reset my password?", time: "5 min ago" },
+  { id: 2, user: "Sagar", message: "What are your business hours?", time: "15 min ago" },
+  { id: 3, user: "Aarav", message: "I need help with my order.", time: "30 min ago" },
 ];
 
 export default function ChatbotAdminDashboard() {

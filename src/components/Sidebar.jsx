@@ -3,6 +3,7 @@ import { FaTachometerAlt, FaRobot, FaUser, FaCog, FaSignOutAlt } from "react-ico
 import { motion } from "framer-motion";
 import { useNavigate, useLocation } from "react-router-dom";
 import "../Style.css";
+import sunny from "../assets/sunny.jpg"
 
 import CompanyRegistration from "../pages/CompanyRegistration";
 
@@ -47,11 +48,10 @@ const Sidebar = ({ user, onLogout }) => {
 
           {/* User Info & Logout */}
           <SidebarItem
-            icon={<FaUser />}
+            icon={<img src={sunny} alt="User" className="user-icon" />}
             text={user?.name || "User"}
-            path="/profile"
-            isActive={location.pathname === "/profile"}
           />
+
           <SidebarItem icon={<FaSignOutAlt />} text="Logout" onClick={onLogout} />
         </div>
       </div>

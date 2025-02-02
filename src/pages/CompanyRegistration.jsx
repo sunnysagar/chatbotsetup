@@ -28,11 +28,12 @@ const CompanyRegistration = () => {
       });
 
       const transformedData = {
-        companyName: response.data.name,  // Make sure this key exists in the response
+        companyName: response.data.name, // Make sure this key exists in the response
         websiteUrl: response.data.websiteUrl,
         description: response.data.description,
-        metaDescription: response.data.metaDescription || "No description available.",
-        pages: response.data.pages.map(page => ({
+        metaDescription:
+          response.data.metaDescription || "No description available.",
+        pages: response.data.pages.map((page) => ({
           pageName: page.pageName,
           status: page.status,
           dataChunks: page.dataChunks || [],
@@ -41,7 +42,7 @@ const CompanyRegistration = () => {
 
       console.log("Transformed Data:", transformedData);
       // onSubmitSuccess(response.data); // Pass data to parent component for next steps
-      navigate("/company-dashboard", { state: transformedData });  // Navigate to the next step
+      navigate("/company-dashboard", { state: transformedData }); // Navigate to the next step
     } catch (error) {
       setError("Error submitting company. Please check the details.");
       console.error("Error submitting company:", error);
@@ -51,9 +52,8 @@ const CompanyRegistration = () => {
   };
 
   const handleClose = () => {
-    navigate("/dashboard")
+    navigate("/dashboard");
     setIsVisible(false); // Close the overlay
-    
   };
 
   return (

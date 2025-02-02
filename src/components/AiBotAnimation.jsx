@@ -7,8 +7,7 @@ import "../Style.css";
 const AiBotAnimation = ({aivideo}) => {
   return (
     <motion.div
-      className="ai-bot"
-      
+      className="ai-bot" 
     >
       {/* Animated AI Robot */}
       <video autoPlay loop muted className="ai-bot-video">

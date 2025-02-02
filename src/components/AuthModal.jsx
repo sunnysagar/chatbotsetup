@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import axios from 'axios';
+import axios from "axios";
 import { motion } from "framer-motion";
 import { auth, googleProvider } from "../../firebase"; // NEW
 
@@ -11,12 +11,11 @@ import {
   sendEmailVerification,
   fetchSignInMethodsForEmail,
   onAuthStateChanged,
-  reload
+  reload,
 } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import { FaGoogle } from "react-icons/fa";
 import "../Style.css";
-
 
 const AuthModal = ({ isOpen, onClose }) => {
   const [isSignUp, setIsSignUp] = useState(false);
@@ -25,7 +24,7 @@ const AuthModal = ({ isOpen, onClose }) => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [message, setMessage] = useState(""); // To display verification message
-  
+
   const navigate = useNavigate();
 
   const backendUrl = import.meta.env.VITE_API_URL || "http://localhost:3001";
@@ -40,26 +39,29 @@ const AuthModal = ({ isOpen, onClose }) => {
         },
         {
           headers: {
-            'Content-Type': 'application/json',
+            "Content-Type": "application/json",
           },
         }
       );
       // Handle the response as needed
       console.log(response.data);
     } catch (error) {
-      console.error('Error saving user to database:', error);
+      console.error("Error saving user to database:", error);
     }
   };
-  
 
   // 🔹 Handle Email/Password Authentication
-   // 🔹 Handle Email/Password Authentication
-   const handleAuth = async (e) => {
+  // 🔹 Handle Email/Password Authentication
+  const handleAuth = async (e) => {
     e.preventDefault();
     setError("");
     try {
       if (isSignUp) {
-        const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+        const userCredential = await createUserWithEmailAndPassword(
+          auth,
+          email,
+          password
+        );
         const user = userCredential.user;
 
         // Send email verification
@@ -78,7 +80,11 @@ const AuthModal = ({ isOpen, onClose }) => {
         }, 5000); // Check every 5 seconds
       } else {
         // Sign in user
-        const userCredential = await signInWithEmailAndPassword(auth, email, password);
+        const userCredential = await signInWithEmailAndPassword(
+          auth,
+          email,
+          password
+        );
         const user = userCredential.user;
 
         // Check if user is verified
@@ -132,13 +138,13 @@ const AuthModal = ({ isOpen, onClose }) => {
         <form onSubmit={handleAuth}>
           {isSignUp && (
             <>
-               <label>Name:</label>
-                <input
-                  type="text"
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                  required
-                />
+              <label>Name:</label>
+              <input
+                type="text"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                required
+              />
             </>
           )}
           <label>Email:</label>

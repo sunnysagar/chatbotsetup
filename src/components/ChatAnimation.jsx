@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
-import "../Style.css";  // Add your custom CSS for styles
+import "../Style.css"; // Add your custom CSS for styles
 
 const ChatComponent = ({ triggerChat }) => {
   const [isChatVisible, setChatVisible] = useState(false);
   const [messages, setMessages] = useState([]);
-  const [userTyping, setUserTyping] = useState(false);  // User typing indicator
-  const [botTyping, setBotTyping] = useState(false);    // Bot typing indicator
+  const [userTyping, setUserTyping] = useState(false); // User typing indicator
+  const [botTyping, setBotTyping] = useState(false); // Bot typing indicator
   const [showThankYou, setShowThankYou] = useState(false);
 
   useEffect(() => {
@@ -16,7 +16,7 @@ const ChatComponent = ({ triggerChat }) => {
       // Simulate user typing indicator
       setUserTyping(true);
       setTimeout(() => {
-        setMessages(prev => [
+        setMessages((prev) => [
           ...prev,
           { sender: "user", message: "I need some help!" },
         ]);
@@ -26,7 +26,7 @@ const ChatComponent = ({ triggerChat }) => {
         setBotTyping(true);
         setTimeout(() => {
           setBotTyping(false);
-          setMessages(prev => [
+          setMessages((prev) => [
             ...prev,
             { sender: "bot", message: "Sure! What do you need help with?" },
           ]);
@@ -57,9 +57,13 @@ const ChatComponent = ({ triggerChat }) => {
             </div>
           ))}
 
-          {userTyping && <div className="typing-indicator you">You are typing...</div>}
+          {userTyping && (
+            <div className="typing-indicator you">You are typing...</div>
+          )}
 
-          {botTyping && <div className="typing-indicator bot">Bot is typing...</div>}
+          {botTyping && (
+            <div className="typing-indicator bot">Bot is typing...</div>
+          )}
 
           {showThankYou && (
             <div className="thank-you-message">

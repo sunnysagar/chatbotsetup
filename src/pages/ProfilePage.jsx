@@ -4,7 +4,7 @@ import "../Style.css"
 import UpdateProfileForm from "./UpdateProfileForm"
 import { auth } from "../../firebase"
 
-import robot from "../assets/botecho.png"
+import sunny from "../assets/sunny.jpg"
 import axios from "axios"
 
 const ProfilePage = () => {
@@ -40,11 +40,11 @@ const ProfilePage = () => {
 
   return (
     <div className="profileContainer">
-      <section className="photoSection">
-        <img src={userData.photo || robot} alt="User" className="userPhoto" />
+      <section className="section photoSection">
+        <img src={userData.photo || sunny} alt="User" className="userPhoto" />
       </section>
 
-      <section className="detailsSection">
+      <section className="section detailsSection">
         <h2 className="sectionTitle">Personal Information</h2>
         <div className="infoItem">
           <User className="icon-profile" />
@@ -64,7 +64,7 @@ const ProfilePage = () => {
         </div>
       </section>
 
-      <section className="locationSection">
+      <section className="section locationSection">
         <h2 className="sectionTitle">Location</h2>
         <div className="infoItem">
           <MapPin className="icon-profile" />

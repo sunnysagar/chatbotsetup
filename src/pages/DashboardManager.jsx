@@ -5,12 +5,10 @@ import { useLocation, useNavigate } from "react-router-dom";
 
 import chatbotIcon from "../assets/chatbot.png";
 
-
 import "../Style.css";
 import ChatComponent from "../components/ChatAnimation";
 
-const DashboardManager = ({ children}) => {
-
+const DashboardManager = ({ children }) => {
   const navigate = useNavigate();
   const location = useLocation(); // For getting current location
 
@@ -25,24 +23,26 @@ const DashboardManager = ({ children}) => {
     setTriggerChat(true);
     setTimeout(() => {
       setTriggerChat(false);
-    }, 6000);  // Reset the chat after the whole process (3s chat + 2s thank you)
+    }, 6000); // Reset the chat after the whole process (3s chat + 2s thank you)
   };
 
-  const handleNav = () => { 
-    if(location.pathname === "/company-dashboard"){
+  const handleNav = () => {
+    if (location.pathname === "/company-dashboard") {
       navigate("/setup-chatbot-intregation");
-    }else{
-      if(location.pathname === "/dashboard"){
+    } else {
+      if (location.pathname === "/dashboard") {
         alert("Please register your company first");
+      }
+      if (
+        location.pathname === "/setup-chatbot-intregation" ||
+        location.pathname === "/admin-dashboard" ||
+        location.pathname === "/user-profile"
+      ) {
+        handleChatTrigger();
+        //  <ChatComponent triggerChat={triggerChat} />
+      }
     }
-    if(location.pathname === "/setup-chatbot-intregation"){
-     handleChatTrigger();
-    //  <ChatComponent triggerChat={triggerChat} />
-    }
-
-
   };
-};
 
   return (
     <div className="dashboard-manager">
@@ -50,12 +50,9 @@ const DashboardManager = ({ children}) => {
         <Sidebar user={{ name: "Sunny Sagar" }} onLogout={handleLogout} />
       </div>
 
-     <div className="dashboard-container">
-      { children }
-     </div>
+      <div className="dashboard-container">{children}</div>
 
-      <div className="chatbot-icon"
-        onClick={handleNav}>
+      <div className="chatbot-icon" onClick={handleNav}>
         <img src={chatbotIcon} alt="chatbot" />
       </div>
 

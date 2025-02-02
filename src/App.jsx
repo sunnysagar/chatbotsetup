@@ -10,6 +10,7 @@ import '@fortawesome/fontawesome-free/css/all.min.css';
 import EchoAssistant from './pages/EchoTesting'
 import ChatbotAdminDashboard from './pages/AdminDashboard'
 import ProfilePage from './pages/ProfilePage'
+import SettingsPage from './pages/Setting'
 
 
 const App = () => {
@@ -24,6 +25,7 @@ const App = () => {
       <Route path="/setup-chatbot-intregation" element={<DashboardManager> <EchoAssistant /> </DashboardManager>} />
       <Route path ="/admin-dashboard" element={ <DashboardManager> <ChatbotAdminDashboard /> </DashboardManager> } />
       <Route path="/user-profile" element={<DashboardManager> <ProfilePage /> </DashboardManager>} />
+      <Route path='/settings' element={<DashboardManager><SettingsPage /></DashboardManager>} />
     </Routes> 
    </Router>
   );
