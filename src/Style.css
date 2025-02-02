@@ -2064,7 +2064,7 @@ button {
 /* Settings Container */
 .settings-container {
   width: 100%;
-  height: 100vh;
+  max-width: 1200px;
   /* background: linear-gradient(to bottom right, #FFEDD5, #FFF3C4); */
   padding: 2rem;
 }
@@ -2495,6 +2495,7 @@ button {
   .sidebar-item:hover {
     width: 10px;
     height: 30px;
+    margin-left: 5px;
   }
 
   .text {
@@ -2706,13 +2707,18 @@ button {
 
   .settings-container {
     width: 100vw;
+    border: 2px solid #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     padding: 1rem; /* Reduce padding for mobile */
   }
 
    /* Adjust card for smaller screens */
    .settings-card {
-    width: 90%; /* Make the card take up more width on mobile */
+     width: 90%;/* Make the card take up more width on mobile */
     max-width: none; /* Remove max-width to make full use of the screen width */
+    margin-left: 0;
   }
   .settings-header h1 {
     font-size: 1.5rem; /* Smaller header text */
@@ -2720,12 +2726,15 @@ button {
 
   .settings-nav-list {
     flex-direction: column; /* Stack navigation items vertically */
-    align-items: center;
+    align-items: flex-start;
+    justify-content: flex-start;
+    
   }
 
   .settings-nav-item {
     font-size: 1rem; /* Smaller text for mobile */
     padding: 0.5rem 0; /* Add some spacing */
+    
   }
 
   .settings-section h2 {
@@ -2737,6 +2746,7 @@ button {
   }
 
   .settings-theme-toggle {
+    
     flex-direction: column; /* Stack theme toggle vertically */
   }
 
