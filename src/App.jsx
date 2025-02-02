@@ -5,7 +5,6 @@ import './Style.css'
 import MainDashboard from './pages/MainDashboard'
 import CompanyRegistration from './pages/CompanyRegistration'
 import CompanyDashboard from './pages/CompanyDashboard'
-import ChatbotIntegration from './pages/ChatBotIntregation'
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import EchoAssistant from './pages/EchoTesting'
 import ChatbotAdminDashboard from './pages/AdminDashboard'
