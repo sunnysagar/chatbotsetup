@@ -56,7 +56,6 @@ const DashboardManager = ({ children}) => {
 
       <div className="chatbot-icon"
         onClick={handleNav}>
-       
         <img src={chatbotIcon} alt="chatbot" />
       </div>
 

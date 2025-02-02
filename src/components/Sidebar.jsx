@@ -33,8 +33,8 @@ const Sidebar = ({ user, onLogout }) => {
           <SidebarItem
             icon={<FaUser />}
             text="Profile"
-            path="/profile"
-            isActive={location.pathname === "/profile"}
+            path="/user-profile"
+            isActive={location.pathname === "/user-profile"}
           />
           <SidebarItem
             icon={<FaCog />}

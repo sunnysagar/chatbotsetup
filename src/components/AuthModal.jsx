@@ -16,6 +16,7 @@ import "../Style.css";
 
 const AuthModal = ({ isOpen, onClose }) => {
   const [isSignUp, setIsSignUp] = useState(false);
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -36,6 +37,15 @@ const AuthModal = ({ isOpen, onClose }) => {
         // Send email verification
         await sendEmailVerification(user);
         setMessage("Verification email sent! Please check your inbox.");
+
+        // Listen for email verification
+      const unsubscribe = auth.onAuthStateChanged(async (user) => {
+        if (user && user.emailVerified) {
+          // Save user details to your Node.js database
+          await saveUserToDatabase({ name, email, password });
+          unsubscribe();
+        }
+      });
       } else {
         // Sign in user
         const userCredential = await signInWithEmailAndPassword(auth, email, password);
@@ -55,6 +65,19 @@ const AuthModal = ({ isOpen, onClose }) => {
       setError(err.message);
     }
   };
+
+  const backendUrl = import.meta.env.VITE_API_URL || "http://localhost:3001";
+  const saveUserToDatabase = async (userData) => {
+    try {
+      const response = await axios.post(`${backendUrl}/api/users`, userData);
+      // Handle the response as needed
+      console.log(respone.data);
+    } catch (error) {
+      console.error('Error saving user to database:', error);
+    }
+  };
+
+  
 
   // 🔹 Handle Google Sign-In
   const handleGoogleSignIn = async () => {
@@ -91,6 +114,17 @@ const AuthModal = ({ isOpen, onClose }) => {
         {message && <p className="success">{message}</p>}
 
         <form onSubmit={handleAuth}>
+          {isSignUp && (
+            <>
+               <label>Name:</label>
+                <input
+                  type="text"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  required
+                />
+            </>
+          )}
           <label>Email:</label>
           <input
             type="email"

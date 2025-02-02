@@ -158,7 +158,6 @@ body {
   
 
 /* Landing Page Styling */
-/* Basic page styling */
 .landing-page {
     font-family: Arial, sans-serif;
     display: flex;
@@ -755,10 +754,13 @@ body {
 }
 
 
-/* Main Dashboard Styling */
+/*Dashboard  managerStyling */
 .dashboard-manager {
   width: 100%;
   display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
   background: #fff;
   position: relative;
   
@@ -766,22 +768,18 @@ body {
 
 /* Sidebar */
 .sidebar-container {
-  flex: 0.1;
   width: 60px;
-  height: 60%;
-  
+  height: 60%;  
 }
 
 .dashboard-container {
   flex: 1;
-  width: 100%;
-  height: 100vh;
-  margin-left: -2%;
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  text-align: center;
+  align-items: center;
+  /* Add padding if needed */
+  margin: 20px;
+  padding: 20px;
  
 }
 
@@ -1122,7 +1120,7 @@ button {
 }
 
 
-/* companydashboard styling */
+/* company dashboard styling */
 .company-dashboard-container {
   display: flex;
   flex-direction: column;
@@ -1131,10 +1129,7 @@ button {
   max-width: 100%;
   height: 100vh;
   /* max-height: fit-content; */
-  box-sizing: border-box;
-  
-
-  
+  box-sizing: border-box;  
  
 }
 
@@ -1212,6 +1207,12 @@ button {
   font-weight: bold;
 }
 
+
+.action-buttons{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 
 .action-buttons .test-chatbot-btnn {
@@ -1618,7 +1619,6 @@ button {
 
 /* admin dashboard */
 
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
 
 :root {
   --bg-color: #0f172a;
@@ -1795,6 +1795,189 @@ button {
   }
 }
 
+/* profile styling */
+
+.profileContainer {
+ 
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  padding: 2rem;
+  border-radius: 10px;
+  gap: 20px;
+  border: 2px solid #000;
+  
+}
+
+.photoSection,
+.detailsSection,
+.locationSection {
+  width: 400px;
+ display: flex;
+ flex-direction: column;
+
+  margin-bottom: 2rem;
+  background-color: #ffffff;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+
+
+.userPhoto {
+  width: 100%;
+  height: auto;
+  border-radius: 50%;
+  object-fit: cover;
+  aspect-ratio: 1;
+}
+
+.sectionTitle {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: #333;
+  border-bottom: 2px solid #007bff;
+  padding-bottom: 0.5rem;
+}
+
+.infoItem {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.75rem;
+  font-size: 1rem;
+}
+
+.icon-profile {
+  margin-right: 0.5rem;
+  color: #007bff;
+}
+
+.label {
+  font-weight: bold;
+  margin-right: 0.5rem;
+  color: #555;
+}
+
+.updateButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 0.75rem;
+  background-color: #007bff;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.updateButton:hover {
+  background-color: #0056b3;
+}
+
+.buttonIcon {
+  margin-right: 0.5rem;
+}
+
+/* update profile */
+
+.overlay-profile {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.formContainer-profile {
+  background-color: #ffffff;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 500px;
+  position: relative;
+}
+
+.closeButton-profile {
+  width: fit-content;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #333;
+}
+
+.closeButton-profile:hover{
+  color: red;
+}
+
+.formTitle {
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  color: #000;
+  text-align: center;
+  font-weight: bold;
+}
+
+.one-row{
+  display: flex;
+  justify-content: space-between;
+}
+
+.formGroup {
+  margin-bottom: 1rem;
+}
+
+.formGroup label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+  color: #000;
+}
+
+.formGroup input {
+  width: 100%;
+  padding: 0.5rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.submitButton {
+  display: block;
+  width: 100%;
+  padding: 0.75rem;
+  background: linear-gradient(145deg, #ff7402, #ec013c);
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.submitButton:hover {
+  background: linear-gradient(145deg, #ec013c, #ff7402);
+  font-weight: bold;
+}
+
+
+
+
   @media screen and (max-width: 768px) {
     .navbar {
       
@@ -1960,12 +2143,13 @@ button {
     .dashboard-manager{
       width: 100vw;
       height: 100vh;
+
+      flex-direction: column;
     }
 
     .sidebar-container {
-      flex: 0.1;
       width: 80%;
-      height: 10%;
+      
     }
 
     .dashboard-container{
@@ -2053,19 +2237,19 @@ button {
       transform: translateY(-50px);
     }
 
-    .chatbot-integration-container {
+    /* .chatbot-integration-container {
       width: 80%;
       height: 100%;
       margin-top: 20%;
       display: flex;
       flex-direction: column;
       /* justify-content: center; */
-      margin-left: 0;
-    }
+      /* margin-left: 0;
+    } */
 
     .company-dashboard-container{
       margin-top: 20%;
-    }
+    } 
     /* chat animations */
     .chat-container {
       width: 40%;
@@ -2079,8 +2263,6 @@ button {
 
     /* echo assitant */
     .echo-card {
-      width: 90%;
-      height: auto;
       padding: 20px;
     }
   
@@ -2112,7 +2294,10 @@ button {
     }
     /*admin panel */
     .chatbot-dashboard-container{
-      margin-top: 15%;
+      margin-top: 25%;
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
     }
     .dashboard-grid {
       grid-template-columns: 1fr;
@@ -2121,6 +2306,13 @@ button {
     .chart-card {
       grid-column: span 1;
     }
+
+    /*profile*/
+    .photoSection,
+  .detailsSection,
+  .locationSection {
+    flex-basis: 100%;
+  }
   }
 
 
