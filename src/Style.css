@@ -2475,20 +2475,25 @@ button {
     top: 0;
     left: 0;
     transform: none;
-    width: fit-content;
-    height: 70%; /* Sidebar height for mobile */
+    width: 70%;
+    height: 60%; /* Sidebar height for mobile */
     flex-direction: row; /* Change layout to horizontal on mobile */
     justify-content: space-around;
   }
 
   .menu {
     flex-direction: row;
-    gap: 1rem;
+    gap: 0.2rem;
   }
 
   .sidebar-item {
+    width: 15px;
+    height: 15px;
     padding: 5px 15px;
+  }
 
+  .separator{
+    width: 10%;
   }
 
   .sidebar-item.active,
