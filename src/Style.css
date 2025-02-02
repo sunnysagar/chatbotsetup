@@ -381,7 +381,7 @@ body {
 }
 
 .learn-more-button:hover {
-  background: linear-gradient(135deg, #3b82f6, #9333ea);
+  background: linear-gradient(135deg, #f6da3b, #f05512);
   /* Color reversal on hover */
 }
 
@@ -2391,12 +2391,15 @@ button {
     justify-content: center;
     align-items: center;
     padding: 20px;
+    
   }
 
   .left .right {
     flex-basis: 100%;
   }
 
+  .right{
+  margin-top: -2rem;
 
   .left-image,
   .right-image {
@@ -2727,7 +2730,10 @@ button {
   }
 
   /*priceplan*/
-
+  .price-container{
+      width: 90%;
+      overflow-x: hidden;
+  }
   .price-grid {
     grid-template-columns: 1fr;
     gap: 15px;
@@ -2755,4 +2761,5 @@ button {
     font-size: 14px;
   }
 
+}
 }
