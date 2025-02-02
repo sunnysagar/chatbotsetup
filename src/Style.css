@@ -366,7 +366,7 @@ body {
   font-weight: 600;
   color: #0c0c0c;
   /* Base color for text */
-  background-image: linear-gradient(135deg, #9333ea, #3b82f6);
+  background-image: linear-gradient(135deg, #f05512, #f6da3b);
   border: none;
   /* Removing border for a cleaner look */
   border-radius: 30px;
@@ -2246,6 +2246,84 @@ button {
   font-weight: 500;
 }
 
+/* pricing styling */
+.price-container {
+  width: 100%;
+  max-width: 1350px;
+  margin: auto;
+  padding: 20px;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.price-title {
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #fe6a0f;
+}
+
+.price-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
+}
+
+.card {
+  border-radius: 10px;
+  padding: 20px;
+  background: #fff;
+  box-shadow: 0 4px 10px rgba(245, 120, 18, 0.875);
+  transition: transform 0.3s ease;
+}
+
+.card.hovered {
+  transform: scale(1.05);
+}
+
+.price-card-header {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.price {
+  font-size: 22px;
+  font-weight: bold;
+  color: #333;
+}
+
+.card-body ul {
+  list-style: none;
+  padding: 0;
+}
+
+.included {
+  color: green;
+}
+
+.not-included {
+  color: red;
+}
+
+.choose-btn {
+
+  margin-top: 10px;
+  padding: 10px;
+  background: linear-gradient(145deg, #ff7402, #ec013c);
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+.choose-btn:hover {
+  background: linear-gradient(145deg, #ec013c, #ff7402);
+  opacity: 0.9;
+}
+
+
 
 
 
@@ -2313,7 +2391,6 @@ button {
     justify-content: center;
     align-items: center;
     padding: 20px;
-    gap: 50px;
   }
 
   .left .right {
@@ -2327,7 +2404,7 @@ button {
   }
 
   .right-top {
-    margin-top: 20px;
+    
     margin-bottom: 30px;
 
   }
@@ -2647,6 +2724,35 @@ button {
 
   .settings-theme-toggle {
     flex-direction: column; /* Stack theme toggle vertically */
+  }
+
+  /*priceplan*/
+
+  .price-grid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .price-title {
+    font-size: 20px;
+  }
+
+  .card {
+    padding: 15px;
+  }
+
+  .card-header {
+    font-size: 16px;
+  }
+
+  .price {
+    font-size: 20px;
+  }
+
+  .choose-btn {
+    width: 80%;
+    padding: 8px;
+    font-size: 14px;
   }
 
 }

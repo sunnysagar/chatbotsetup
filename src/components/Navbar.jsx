@@ -10,7 +10,7 @@ import {
 import "../Style.css"; // Ensure the CSS file is linked correctly
 import logo from "../assets/logo.png";
 
-const Navbar = () => {
+const Navbar = ({ scrollToPricing, scrollToContact }) => {
   const [modalOpen, setModalOpen] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   return (
@@ -24,10 +24,10 @@ const Navbar = () => {
         </div>
       </div>
       <nav className={`nav-links ${isOpen ? "open" : ""}`}>
-        <a href="#pricing">
+        <a href="#pricing" onClick={scrollToPricing}>
           <FaMoneyBillWave /> Pricing
         </a>
-        <a href="#contact">
+        <a href="#contact" onClick={scrollToContact}>
           <FaEnvelope /> Contact Us
         </a>
         <button className="auth-btn" onClick={() => setModalOpen(true)}>

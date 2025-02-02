@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import "../Style.css";
 import { motion } from "framer-motion";
 
@@ -13,16 +13,21 @@ import chatbotIcon from "../assets/chatbot.png";
 import aiBotVideo from "../assets/ai-bot.mp4";
 import ContactFooter from "../components/ContactFooter";
 import ChatComponent from "../components/ChatAnimation";
+import PricingPlans from "../components/Pricing";
 
 const LandingPage = () => {
   const [center, setCenter] = useState("video"); // Default center element
+  const [triggerChat, setTriggerChat] = useState(false);
+
+  // Create references for pricing and contact sections
+  const pricingRef = useRef(null);
+  const contactRef = useRef(null);
 
   const handleHover = (element) => {
     setCenter(element);
   };
 
-  const [triggerChat, setTriggerChat] = useState(false);
-
+  
   const handleChatTrigger = () => {
     setTriggerChat(true);
     setTimeout(() => {
@@ -36,10 +41,17 @@ const LandingPage = () => {
     }
   };
 
+   // Function to scroll to a section
+   const scrollToSection = (ref) => {
+    if (ref.current) {
+      ref.current.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  };
+
   return (
     <div className="landing-page">
       {/* Include Navbar */}
-      <Navbar />
+      <Navbar scrollToPricing={() => scrollToSection(pricingRef)} scrollToContact={() => scrollToSection(contactRef)}/>
 
       {/* Main Section */}
       <div className="main-content">
@@ -108,7 +120,14 @@ const LandingPage = () => {
       </div>
       {triggerChat && <ChatComponent triggerChat={triggerChat} />}
 
-      <ContactFooter />
+      <div ref={pricingRef}>
+        <PricingPlans />
+      </div>
+
+      {/* Contact Section */}
+      <div ref={contactRef}>
+        <ContactFooter />
+      </div>
     </div>
   );
 };
