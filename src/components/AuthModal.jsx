@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import axios from 'axios';
 import { motion } from "framer-motion";
 import { auth, googleProvider } from "../../firebase"; // NEW
 
@@ -8,6 +9,9 @@ import {
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
   sendEmailVerification,
+  fetchSignInMethodsForEmail,
+  onAuthStateChanged,
+  reload
 } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import { FaGoogle } from "react-icons/fa";
@@ -24,28 +28,54 @@ const AuthModal = ({ isOpen, onClose }) => {
   
   const navigate = useNavigate();
 
+  const backendUrl = import.meta.env.VITE_API_URL || "http://localhost:3001";
+  const saveUserToDatabase = async () => {
+    try {
+      const response = await axios.post(
+        `${backendUrl}/api/users`,
+        {
+          name: name,
+          email: email,
+          password: password,
+        },
+        {
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        }
+      );
+      // Handle the response as needed
+      console.log(response.data);
+    } catch (error) {
+      console.error('Error saving user to database:', error);
+    }
+  };
+  
+
   // 🔹 Handle Email/Password Authentication
-  const handleAuth = async (e) => {
+   // 🔹 Handle Email/Password Authentication
+   const handleAuth = async (e) => {
     e.preventDefault();
     setError("");
     try {
       if (isSignUp) {
         const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-
         const user = userCredential.user;
 
         // Send email verification
         await sendEmailVerification(user);
         setMessage("Verification email sent! Please check your inbox.");
 
-        // Listen for email verification
-      const unsubscribe = auth.onAuthStateChanged(async (user) => {
-        if (user && user.emailVerified) {
-          // Save user details to your Node.js database
-          await saveUserToDatabase({ name, email, password });
-          unsubscribe();
-        }
-      });
+        // Periodically check for email verification status
+        const checkEmailVerification = setInterval(async () => {
+          await user.reload();
+          if (user.emailVerified) {
+            // Save user details to your Node.js database
+            await saveUserToDatabase();
+            alert("Data saved in database");
+            clearInterval(checkEmailVerification);
+          }
+        }, 5000); // Check every 5 seconds
       } else {
         // Sign in user
         const userCredential = await signInWithEmailAndPassword(auth, email, password);
@@ -60,24 +90,10 @@ const AuthModal = ({ isOpen, onClose }) => {
         navigate("/dashboard"); // ✅ Redirect to Dashboard on Success
         onClose(); // Close modal after successful auth
       }
-     
     } catch (err) {
       setError(err.message);
     }
   };
-
-  const backendUrl = import.meta.env.VITE_API_URL || "http://localhost:3001";
-  const saveUserToDatabase = async (userData) => {
-    try {
-      const response = await axios.post(`${backendUrl}/api/users`, userData);
-      // Handle the response as needed
-      console.log(respone.data);
-    } catch (error) {
-      console.error('Error saving user to database:', error);
-    }
-  };
-
-  
 
   // 🔹 Handle Google Sign-In
   const handleGoogleSignIn = async () => {
