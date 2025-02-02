@@ -1,8 +1,6 @@
 /* src/styles.css */
 
 body {
-  width: 100%;
-  height: 100%;
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
@@ -388,7 +386,7 @@ body {
 /* contact footer styling */
 /* Footer.css */
 
-.footer {
+.contact-contact {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -404,7 +402,7 @@ body {
 
 
 
-.footer-contain {
+.contact-contain {
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -416,7 +414,7 @@ body {
 }
 
 /* Left Section: Company Name & Subtitle */
-.footer-left {
+.contact-left {
   flex: 1;
   min-width: 250px;
   display: flex;
@@ -436,19 +434,19 @@ body {
   height: 80px;
 }
 
-.footer-left img {
+.contact-left img {
   width: 120px;
   height: 100px;
 }
 
-.footer-company-name {
+.contact-company-name {
   font-size: 1.5rem;
   font-weight: bold;
   margin: 0;
 }
 
 .logo-title p,
-.footer p {
+.contact p {
   font-size: 0.9rem;
   color: #1b0404;
   margin-top: 0.3rem;
@@ -508,65 +506,65 @@ body {
   transform: skewX(45deg) translateX(-150px);
 }
 
-.footer-company-name {
+.contact-company-name {
   font-size: 1.8rem;
   font-weight: bold;
   margin: 0;
 }
 
-.footer-subtitle {
+.contact-subtitle {
   font-size: 1rem;
   color: #d0e3ff;
   margin-top: 0.3rem;
 }
 
 /* Center Section: Navigation Links */
-.footer-center {
+.contact-center {
   flex: 1;
   min-width: 200px;
   text-align: center;
 }
 
-.footer-center h3 {
+.contact-center h3 {
   font-size: 1.2rem;
   margin-bottom: 0.8rem;
 }
 
-.footer-links {
+.contact-links {
   list-style: none;
   padding: 0;
   margin: 0;
 }
 
-.footer-link-item {
+.contact-link-item {
   margin: 0.5rem 0;
 }
 
-.footer-link {
+.contact-link {
   color: #ffffff;
   text-decoration: none;
   font-size: 1rem;
   transition: color 0.3s ease, transform 0.3s ease;
 }
 
-.footer-link:hover {
+.contact-link:hover {
   color: #f9e107;
   transform: translateY(-3px);
 }
 
 /* Right Section: Contact Information */
-.footer-right {
+.contact-right {
   flex: 1;
   min-width: 250px;
   text-align: right;
 }
 
-.footer-right h3 {
+.contact-right h3 {
   font-size: 1.2rem;
   margin-bottom: 0.8rem;
 }
 
-.footer-right p {
+.contact-right p {
   margin: 0.3rem 0;
   color: #e2e7f0;
 }
@@ -2248,7 +2246,7 @@ button {
 
 /* pricing styling */
 .price-container {
-  width: 100%;
+  
   max-width: 1350px;
   margin: auto;
   padding: 20px;
@@ -2324,7 +2322,42 @@ button {
 }
 
 
+/* contact */
+@media (max-width: 768px) {
+  .contact-contact {
+    padding: 1rem;
+    text-align: center;
+  }
 
+  .contact-contain {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .contact-left,
+  .contact-center,
+  .contact-right {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+
+  .social-media-icons {
+    justify-content: center;
+  }
+
+  .contact-link-item {
+    text-align: center;
+  }
+
+  .contact-right p {
+    text-align: center;
+  }
+
+  .horizontal-line {
+    width: 90%;
+  }
+}
 
 
 
@@ -2423,35 +2456,6 @@ button {
   .right-bottom {
     margin-top: 5%;
   }
-
-  /*footer*/
-  .footer {
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding: 2rem;
-  }
-
-  .footer-contain {
-    justify-content: center;
-    align-items: center;
-
-  }
-
-  .footer-left,
-  .footer-center,
-  .footer-right {
-    text-align: center;
-    margin-bottom: 1rem;
-  }
-
-  .social-media-icons li a {
-    width: 30px;
-    height: 30px;
-    /* flex-direction: column; */
-  }
-
   /* auth modal */
   .auth-modal {
     width: 70%;
