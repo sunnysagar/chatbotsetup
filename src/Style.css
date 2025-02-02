@@ -2251,6 +2251,7 @@ button {
 
 
 @media screen and (max-width: 768px) {
+  
   .navbar {
 
     padding: 10px;
@@ -2383,7 +2384,7 @@ button {
     top: 0;
     left: 0;
     transform: none;
-    width: 80%;
+    width: fit-content;
     height: 70%; /* Sidebar height for mobile */
     flex-direction: row; /* Change layout to horizontal on mobile */
     justify-content: space-around;
@@ -2391,7 +2392,7 @@ button {
 
   .menu {
     flex-direction: row;
-    gap: 0.2rem;
+    gap: 1rem;
   }
 
   .sidebar-item {
@@ -2456,8 +2457,6 @@ button {
     align-items: center;
 
   }
-
-
 
   .middle-container {
     flex: 1;
