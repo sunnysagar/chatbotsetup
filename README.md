@@ -33,6 +33,7 @@ The primary objective of this project is to build an intelligent and interactive
   - Add, get, and update user details
 - **Company Registration:**
   - Companies can register and create profiles
+  - Details should be like this Name- company URL: https://www.linkedin.com, description - Great company 
 - **Dynamic URL-based Content:**
   - Page content and layout are dynamically rendered based on the URL
 - **Live Chatbot:**
