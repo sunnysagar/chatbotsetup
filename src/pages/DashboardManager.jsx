@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Sidebar from "../components/Sidebar";
 import { auth } from "../../firebase";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -13,6 +13,22 @@ const DashboardManager = ({ children }) => {
   const location = useLocation(); // For getting current location
   const [triggerChat, setTriggerChat] = useState(false);
   const [customMessages, setCustomMessages] = useState([]) ;
+  const [firstName, setFirstName] = useState("");
+
+  useEffect(() => {
+    const user = auth.currentUser;
+    if (user) {
+      let name = user.displayName;
+      
+      if (name) {
+        // Extract first word from displayName
+        setFirstName(name.split(" ")[0]);
+      } else if (user.email) {
+        // Fallback: Extract from email (before @)
+        setFirstName(user.email.split("@")[0]);
+      }
+    }
+  }, []);
 
   const handleLogout = async () => {
     await auth.signOut();
@@ -56,7 +72,7 @@ const DashboardManager = ({ children }) => {
         }, 7000)
       } else if(location.pathname === "/user-profile"){
         setCustomMessages([
-          "Hi Sunny, How can I help you?",
+          `Hi ${firstName}, How can I help you?`,
           "Can you highlight your best feature?",
           "sure, I can work as you want."
         ])

@@ -7,6 +7,7 @@ const ChatComponent = ({ triggerChat, customMessages = [] }) => {
   const [userTyping, setUserTyping] = useState(false); // User typing indicator
   const [botTyping, setBotTyping] = useState(false); // Bot typing indicator
   const [showThankYou, setShowThankYou] = useState(false);
+  
 
   useEffect(() => {
     if (triggerChat && customMessages.length > 0) {
