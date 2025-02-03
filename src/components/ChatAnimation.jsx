@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "../Style.css"; // Add your custom CSS for styles
 
-const ChatComponent = ({ triggerChat }) => {
+const ChatComponent = ({ triggerChat, customMessages = [] }) => {
   const [isChatVisible, setChatVisible] = useState(false);
   const [messages, setMessages] = useState([]);
   const [userTyping, setUserTyping] = useState(false); // User typing indicator
@@ -9,16 +9,15 @@ const ChatComponent = ({ triggerChat }) => {
   const [showThankYou, setShowThankYou] = useState(false);
 
   useEffect(() => {
-    if (triggerChat) {
+    if (triggerChat && customMessages.length > 0) {
       setChatVisible(true);
-      setMessages([{ sender: "bot", message: "Hi, how can I help you?" }]);
-
+      setMessages([{ sender: "bot", message: customMessages[0] }]);
       // Simulate user typing indicator
       setUserTyping(true);
       setTimeout(() => {
         setMessages((prev) => [
           ...prev,
-          { sender: "user", message: "I need some help!" },
+          { sender: "user", message: customMessages[1] },
         ]);
         setUserTyping(false);
 
@@ -28,20 +27,17 @@ const ChatComponent = ({ triggerChat }) => {
           setBotTyping(false);
           setMessages((prev) => [
             ...prev,
-            { sender: "bot", message: "Sure! What do you need help with?" },
+            { sender: "bot", message: customMessages[2] },
           ]);
           // Show thank you message after a further delay
-          setTimeout(() => {
-            setShowThankYou(true);
             setTimeout(() => {
               setChatVisible(false);
-              setShowThankYou(false);
             }, 2000); // Thank you message stays for 2 seconds
-          }, 3000); // Bot's reply stays for 3 seconds
+           // Bot's reply stays for 3 seconds
         }, 2000); // Typing delay for bot (3 seconds)
       }, 3000); // User's message delay
     }
-  }, [triggerChat]);
+  }, [triggerChat, customMessages]);
 
   return (
     <div className={`chat-container ${isChatVisible ? "show" : ""}`}>

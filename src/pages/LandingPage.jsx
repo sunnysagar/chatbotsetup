@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import Navbar from "../components/Navbar";
 import AiBotAnimation from "../components/AiBotAnimation";
 import AnimatedButton from "../components/SetUpButton";
+import AuthModal from "../components/AuthModal";
 
 import setupVid from "../assets/setup.mp4";
 import leftChat from "../assets/left_chat.jpg";
@@ -18,6 +19,8 @@ import PricingPlans from "../components/Pricing";
 const LandingPage = () => {
   const [center, setCenter] = useState("video"); // Default center element
   const [triggerChat, setTriggerChat] = useState(false);
+  const [customMessages, setCustomMessages] = useState([]);
+  const[modalOpen, setModalOpen] = useState(false);
 
   // Create references for pricing and contact sections
   const pricingRef = useRef(null);
@@ -29,15 +32,27 @@ const LandingPage = () => {
 
   
   const handleChatTrigger = () => {
+   
     setTriggerChat(true);
+
     setTimeout(() => {
       setTriggerChat(false);
-    }, 6000); // Reset the chat after the whole process (3s chat + 2s thank you)
+      setModalOpen(true);
+    }, 7000); // Reset the chat after the whole process (3s chat + 2s thank you)
   };
 
   const handleNav = () => {
     if (location.pathname === "/") {
-      handleChatTrigger();
+      setCustomMessages([
+        "Lets, SignIn/Signup to explore.",
+          "Sure",
+          "Okay! let me tak you there"
+      ]);
+
+      setTriggerChat(true);
+      setTimeout(() => {
+        setModalOpen(true);
+      }, 6500);
     }
   };
 
@@ -118,7 +133,8 @@ const LandingPage = () => {
       <div className="chatbot-icon" onClick={handleNav}>
         <img src={chatbotIcon} alt="chatbot" />
       </div>
-      {triggerChat && <ChatComponent triggerChat={triggerChat} />}
+      {triggerChat && <ChatComponent triggerChat={triggerChat} customMessages={customMessages} />}
+      <AuthModal isOpen={modalOpen} onClose={() => setModalOpen(false)} />
 
       <div ref={pricingRef}>
         <PricingPlans />
