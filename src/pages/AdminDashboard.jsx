@@ -20,7 +20,7 @@ const recentConversations = [
 
 export default function ChatbotAdminDashboard() {
   return (
-    <div className="chatbot-dashboard-container">
+    <div className="admin-dashboard-container">
       <h1 className="dashboard-title">Chatbot Admin Dashboard</h1>
       
       {/* Row 1: Stats + Chart */}
@@ -74,7 +74,7 @@ export default function ChatbotAdminDashboard() {
           </ul>
         </div>
 
-        <div className="dashboard-card settings-card">
+        <div className="dashboard-card admin-settings-card">
           <h2>Quick Settings</h2>
           <div className="settings-grid">
             <button className="settings-button">

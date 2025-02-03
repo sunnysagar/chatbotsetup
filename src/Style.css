@@ -1696,11 +1696,15 @@ button {
   --border-color: rgba(255, 255, 255, 0.2);
 }
 
-.chatbot-dashboard-container {
-  width: 100%;
+.admin-dashboard-container {
+  width: 100vw; /* Ensures it takes full screen width */
   max-width: 1200px;
   margin: 0 auto;
   padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-x: hidden; /* Prevents horizontal scroll issues */
 }
 
 .dashboard-title {
@@ -1710,16 +1714,17 @@ button {
   animation: fadeInDown 0.5s ease-out;
 }
 
-/* Parent Row Container */
+/* Parent Row Container (Two Cards Per Row) */
 .dashboard-row {
   display: flex;
   width: 100%;
+  max-width: 100%;
   justify-content: space-between;
   gap: 1.5rem;
   margin-bottom: 1.5rem;
 }
 
-/* Each card takes 50% width */
+/* Cards take 50% of parent row */
 .dashboard-card {
   flex: 1;
   background: var(--card-bg);
@@ -1819,8 +1824,17 @@ button {
 
 /* Responsive Design */
 @media (max-width: 768px) {
+  .admin-dashboard-container {
+    width: 100vw;
+    padding: 1rem;
+    justify-content: center;
+    align-items: center;
+  }
+
   .dashboard-row {
+    width: 80%;
     flex-direction: column;
+    align-items: center;
     gap: 1rem;
   }
 
@@ -1830,24 +1844,11 @@ button {
 }
 
 /* Animations */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
 @keyframes fadeInDown {
   from {
     opacity: 0;
     transform: translateY(-20px);
   }
-
   to {
     opacity: 1;
     transform: translateY(0);
