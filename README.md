@@ -27,7 +27,7 @@ The primary objective of this project is to build an intelligent and interactive
   
 ## Features
 - **User Authentication:**
-  - Google Sign-In
+  - Google Sign-In: only in destop.
   - Email/Password authentication and verification using Firebase
 - **User Management:**
   - Add, get, and update user details
