@@ -22,7 +22,9 @@ export default function ChatbotAdminDashboard() {
   return (
     <div className="chatbot-dashboard-container">
       <h1 className="dashboard-title">Chatbot Admin Dashboard</h1>
-      <div className="dashboard-grid">
+      
+      {/* Row 1: Stats + Chart */}
+      <div className="dashboard-row">
         <div className="dashboard-card stats-card">
           <h2>Statistics</h2>
           <div className="stats-grid">
@@ -43,6 +45,7 @@ export default function ChatbotAdminDashboard() {
             </div>
           </div>
         </div>
+
         <div className="dashboard-card chart-card">
           <h2>Conversations per Day</h2>
           <BarChart width={500} height={300} data={data}>
@@ -54,6 +57,10 @@ export default function ChatbotAdminDashboard() {
             <Bar dataKey="conversations" fill="#8884d8" />
           </BarChart>
         </div>
+      </div>
+
+      {/* Row 2: Recent Conversations + Settings */}
+      <div className="dashboard-row">
         <div className="dashboard-card conversations-card">
           <h2>Recent Conversations</h2>
           <ul className="conversation-list">
@@ -66,6 +73,7 @@ export default function ChatbotAdminDashboard() {
             ))}
           </ul>
         </div>
+
         <div className="dashboard-card settings-card">
           <h2>Quick Settings</h2>
           <div className="settings-grid">
